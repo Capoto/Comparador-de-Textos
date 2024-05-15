@@ -1,5 +1,4 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
 <div class="container-fluid">
     <a class="navbar-brand" href="index">Liderança do Governo</a>
@@ -22,36 +21,43 @@
 </nav>
 
 
-
- <br><br><br><br>
+ <br><br><br><br><br><br>
  
  <center>
-  <form enctype="multipart/form-data" method="post">
+  <div class="glass-login-form">
+    <br>
+  <form  enctype="multipart/form-data" method="post">
     {% csrf_token %}
   <div class="mb-3">
-    <label for="formFile" class="form-label">Primeiro arquivo</label>
-    <input class="form-control" type="file" id="formFile" name="myfile" required>
+    <h2>Informe a Data</h2>
+    <br>
+    <input class="form-control" type="date"  name="plenariodata" required>
   </div>
   <br><br>
-  <div class="mb-3">
-    <label for="formFile" class="form-label" required>Segundo arquivo</label>
-    <input class="form-control" type="file" id="formFile"  name="myfile2" required>
-  </div>
-   <br> <br>
+ 
   <button type="submit" class="btn btn-light">Enviar</button>
 </form>
 </center>
-
+</div>
 <style>
 
   .mb-3{
 
-    width: 20%;
+    width: 300px;
+  }
+  h2{
+    color: gray;
+  }
+  .btn{
+    width: 300px;
+   
   }
 
-  .btn{
-    width: 20%;
-    background-color: #e3f2fd;
+  .glass-login-form {
+    background:  #e3f2fd;
+    height: 300px;
+    width: 400px;
+    border-radius: 10px;
   }
 
 </style>

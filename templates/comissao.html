@@ -25,33 +25,48 @@
 
  <br><br><br><br>
  
+ <br>
+ 
  <center>
+  <div class="glass-login-form">
+    <br>
   <form enctype="multipart/form-data" method="post">
     {% csrf_token %}
   <div class="mb-3">
-    <label for="formFile" class="form-label">Primeiro arquivo</label>
-    <input class="form-control" type="file" id="formFile" name="myfile" required>
+    <h3>Informe a Data ínicio</h3>
+    <input class="form-control" type="date" id="formFile" name="myfile" required>
   </div>
-  <br><br>
+  <br>
   <div class="mb-3">
-    <label for="formFile" class="form-label" required>Segundo arquivo</label>
-    <input class="form-control" type="file" id="formFile"  name="myfile2" required>
+    <h3>Informe a Data fim</h3>
+    <input class="form-control" type="date" id="formFile2" name="myfile2" required>
   </div>
-   <br> <br>
+  <br>
+ 
   <button type="submit" class="btn btn-light">Enviar</button>
 </form>
+</div>
 </center>
 
 <style>
 
-  .mb-3{
-
-    width: 20%;
-  }
-
-  .btn{
-    width: 20%;
-    background-color: #e3f2fd;
-  }
-
-</style>
+    .mb-3{
+  
+      width: 300px;
+    }
+    h3{
+      color: gray;
+    }
+    .btn{
+      width: 300px;
+     
+    }
+  
+    .glass-login-form {
+      background:  #e3f2fd;
+      height: 350px;
+      width: 450px;
+      border-radius: 10px;
+    }
+  
+  </style>

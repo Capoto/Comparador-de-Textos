@@ -1,157 +1,209 @@
-Histórico Escolar - Emitido em: 26/04/2024 às 07:47Decanato de Pós-Graduação
-Heitor Gomes Pereira Nome:Dados Pessoais
-BRASILEIRADados Pessoais
-Nacionalidade:
-Nº do documento com órgão expedidor: 3214794, (SSP/DF)
-045.255.761-54 Nº do CPF:Data de Nascimento: 14/03/1999 Local de Nascimento: BRASIL
-Dados do Vínculo do(a) Discente
-PROGRAMA DE PÓS-GRADUAÇÃO EM COMPUTAÇÃO APLICADA
-(PROFISSIONAL)
-AGO/2023
-JUL/2025 0 mesesPROGRAMA:
-Mês/Ano Inicial:
-Prazo para Conclusão Suspensões:Status:ATIVO
-Mês Atual:
-Prorrogações:
-Mês/Ano de Saída:Tipo Saída:9º
-0 mesesÁrea de Concentração: Computação AplicadaCurso: COMPUTAÇÃO APLICADA
-Linha de Pesquisa:Currículo: 299/1
-Orientador:
-Data da Defesa:2518570 - MARCOS FAGUNDES CAETANO
-Forma de Ingresso: Seleção de Pós-GraduaçãoNível: MESTRADO
  
- SIGAA - Sistema Integrado de Gestão de Atividades Acadêmicas
-UnB - Universidade de Brasília
-Campus Darcy Ribeiro -Centro de Vivência, Térreo- Asa Norte - CEP 70910-900
-Matrícula:    232103451
-Componentes Curriculares Cursados/Cursando
-CH Situação Componente CurricularAno/Período
-Letivo
-2023.230 FUNDAMENTOS DE BANCO DE DADOS APROVADO(A)
-PPCA0002EMENTA:  1. Conceitos fundamentais de bancos de dados.2. Modelos de dados e linguagens.3. Projeto de bancos de dados.4. Componentes
-de um sistema de banco de dados: processamento de consultas, recuperação de falhas e controle de concorrência.
-BIBLIOGRAFIA:
-Fundamentals of Database Systems. Ramez Elmasri, Shamkant Navathe. Editora Addison Wesley, 2010.Database System Concepts. Abraham
-Silberschartz, Henry Korth, S. Sudarshan. Editora McGraw-Hill, 2006.Implementação de Sistemas de Banco de Dados. Hector-Garcia Molina.
-Editora Campus, 2001.
-2023.230 MINERAÇÃO DE DADOS APROVADO(A)
-PPCA0004EMENTA:  1. Conceituação de mineração de dados e de texto.2. Modelo de referência CRISP-DM.3. Técnicas para pré-processamento de
-dados.4. Algoritmos de mineração de dados.5. Métodos de avaliação.6. Ferramentas para mineração de dados.7. Estudo de caso.
-BIBLIOGRAFIA:
-CRISP-DM 1.0 Step-by-step data mining guide. Pete Chapman (NCR), Julian Cliunton (SPSS), Randy Kerber (NCR), Thomas Khabaza (SPSS),
-Thomas Reinartz, (DaimlerChrysler), COlin Shearer (SPSS), and Rudiger Wirth (DaimlerChrysler). Editora CRISP-DM Consortium, 2000.Data
-Mining: Practical Machine Learning Tools and Techniques. Ian H. Witten, Eibe Frank and Mark A. Hall. Editora Morgan Haufmann, 2011.Data
-Mining Techniques for Marketing, Sales, and Customer Support. Michael J. A. Berry, Gordon Linoff. Editora John Wiley & sons, 1997.
-2023.230 FUNDAMENTOS EM PESQUISA OPERACIONAL APROVADO(A)
-PPCA0005EMENTA:  1. Conceituação de pesquisa operacional.2. Noções de programação linear, programação não linear, processos estocásticos, teoria
-de filas, e simulação.
-BIBLIOGRAFIA:
-Pesquisa Operacional. SILVA, Ermes M. Silva, Elio M. Gonçalves, Valter Murolo Afrânio Carlos. Editora Atlas, 2000.
-2023.230 ALGORITMOS E ESTRUTURAS DE DADOS APROVADO(A)
-PPCA2211EMENTA:  1. Fornecer uma visão formal e sistemática dos conceitos básicos de modelos de computação, linguagens formais e algoritmos.2.
-Introduzir o conceito de estrutura de dados.3. Apresentar as principais estruturas de dados lineares e não lineares e discutir suas aplicações.4.
-Introduzir os principais algoritmos de ordenação e manipulação de estruturas de dados.
-BIBLIOGRAFIA:
-Data Structures and Algorithms. Aho, A. V. Hopcroft, J. E. e Ullman, J. D. Editora Addison Wesley, 1983.Data Structures: Theory and Practice.
-Berztiss, A. T. Editora Academic Press, 1975.The Art of Copmuter Programming. Donald Knuth. Editora Addison Wesley, 2011.
-3 Página 1de Para verificar a autenticidade deste documento entre em  https://sig.unb.br/sigaa/documentos/ informando a matrícula, data de emissão e o
-código de verificação:  0bd0b0deefHeitor Gomes Pereira Nome: Matrícula: 232103451Decanato de Pós-Graduação
+Elaborado pela Secretaria Legislativa do Congresso Nacional - Telefone: 3303 -4050  
+(Elaboração: 15/04/2024 15:02 ) 
+ Quadro Comparativo  
+Medida Provisória nº 1212/2024  Secretaria Legislativa do Congresso Nacional - SLCN  
+  
  
- SIGAA - Sistema Integrado de Gestão de Atividades Acadêmicas
-UnB - Universidade de Brasília
-Campus Darcy Ribeiro -Centro de Vivência, Térreo- Asa Norte - CEP 70910-900
-Histórico Escolar - Emitido em: 26/04/2024 às 07:47
-Componentes Curriculares Cursados/Cursando
-CH Situação Componente CurricularAno/Período
-Letivo
-2023.30 ANÁLISE ESTATÍSTICA DE DADOS E INFORMAÇÕES CUMPRIU
-PPCA0003EMENTA:  1. Análise descritiva, classificação, análise e interpretação de informações univariadas e multivariadas, modelos e técnicas Box-Plot,
-avaliação de outliers.2. Análise de variáveis aleatórias contínuas e discretas.3. Noções de amostragem, medidas de posição e dispersão.4.
-Probabilidade, porincipais distribuições discretas e contínuas, ineferência estatística e intervalos de confiança.5. Teste de hipóteses e testes não
-paramétricos.6. Modelos de análise de variância, teste F e Qui-quadrado.7. Regressão e Correlação.
-BIBLIOGRAFIA:
-Análise Multivariada de Dados. Hair, Anderson, Tathan, Black. Editora Bookman, 2005.Estatística para Economistas. Rodolfo Hoffman. Editora
-Biblioteca Pioneira de Ciências Sociais, 1987.Curso de Estatística. Jairo Simon da Fonseca, Gilberto de Andrade Martins. Editora Atlas, 1996.
-2023.30 GESTÃO DE PROJETOS DE TI CUMPRIU
-PPCA0006EMENTA:  1. Gerência de projetos2. Gerência de riscos3. Organização de projetos4. Controle, medição e acompanhamento de projetos5.
-Revisão e avaliação de projetos (satisfação dos clientes, performance, etc.)6. Alinhamento da infraestrutura de TI com a organização7. Técnicas
-para gerenciamento de projetos (PMBOK, SCRUM, etc.)8. Governança de TI.
-BIBLIOGRAFIA:
-IT Governance: How Top Performers Manage IT Decision Rights for Superior Results. Peter Weill, Jeanne Ross. Editora Harvard Business
-Press, 2004.A Guide to the Project Management Body of Knowledge: (Pmbok Guide). Project Management Institute (Corporate Author). Editora
-Project Management Institute, 2008.Succeeding with Agile: Software Development Using Scrum. Mike Cohn. Editora Addison-Wesley
-Professional, 2009.
-2024.130 BANCO DE DADOS MASSIVOS MATRICULADO(A)
-PPCA0025EMENTA:  1. Tipos de banco de dados.2. Conceituação de banco de dados não relacionais.3. Banco de dados orientado a coluna.4. Banco de
-dados orientado a documentos.5. Banco de dados orientado a grafo.6. Banco de dados orientado a chave-valor.
-BIBLIOGRAFIA:
-NoSOL Distilled: A Brief Guide to the Emerging World of Polyglot Persistence. Pramod J. Sadalage and Martin Fowler. Pearson Education,
-2012.Big Data Now: 2012 Edition. O'Reilly Media Inc. O'Reilly, 2012.HAdoop: The Definitive Guide. Tom White. Yahoo, 2012.
-2024.130 MÉTODOS COMPUTACIONAIS INTENSIVOS PARA MINERAÇÃO DE DADOS MATRICULADO(A)
-PPCA0026EMENTA:  1. Métodos não paramétricos e a estatística robusta: testes estatísticos, regressão não paramétrica, estimação de densidades,
-gráficos para grandes conjuntos de dados, componentes principais, estatística robusta.2. A inferência estatística por simulações:
-verossimilhança, testes e intervalos de confiança de Monte Carlo.3. Bootstrapping: formulação e propriedades, intervalos de confiança,
-bootstrap duplo, aplicações em modelos lineares, diagnósticos, Jackknife.4. O método MCMC (Markov Chain Monte Carlo): formulação e
-propriedades, amostradores de Gibbs, algoritmo de Metropolis-HAsting, aplicações em modelso lineares, diagnósticos.
-BIBLIOGRAFIA:
-Bayesian Computation with R. Albert, J. Springer, 2007.Applied Smoothing Techniques for Data Analysis: The Kernel, Approach with S-Plus
-Illustrations. Bowman, A. and Azzalini, A. Oxford University, 1997.Monte Carlo Statistical Methods. Robert, C. P. and Casella, G. Springer,
-2004.Graphics of Large Datasets: Visualizing a Million. Uniwin, A., Theus, M. and Hofmann, H. Springer, 2006.
-2024.130 MINERAÇÃO DE DADOS MASSIVOS MATRICULADO(A)
-PPCA0027EMENTA:  1. Conceituação de análise de dados massivos.2. Processamento paralelo aplicado à análise de dados massivos.3. Algoritmos de
-mineração de dados para análise de dados massivos.4. Algoritmos de mineração de textos para análise de dados massivos.5. Algoritmos de
-análise de redes sociais para análise de dados massivos.6. Ferramentas para análise de dados massivos.7. Estudo de caso.
-BIBLIOGRAFIA:
-Machina Learning with R. Brent Lantz. Packt Publishing, 2013.Data Just Right: Introduction to Large-Scale Data & Analytics. Michael
-Manoochehri. Addison-Wesley Professional, 2013.
-2024.130 NOÇÕES BÁSICAS DE SELEÇÃO DE AMOSTRAS MATRICULADO(A)
-PPCA0028EMENTA:  1. Amostragem Probabilística.2. Amostragem Estratificada.3. Uso de variávesi auxiliares na Amostragem Estratificada.4.
-Amostragem Sistemática.5. Amostragem por Conglomerados.6. Planos amostrais complexos.7. Efeitos da não-resposta: métodos de
-ponderação para a não-resposta.
-BIBLIOGRAFIA:
-Sampling Techniques. William G. Cochran. John Wiley, 1977.Sampling. Steven K. Thompson. Wiley, 2002.Sampling: Design and Analysis.
-Sharon L. Lohr. Brooks/Cole, 2009.
-2024.130 TÓPICOS AVANÇADOS EM MINERAÇÃO DE DADOS MATRICULADO(A)
-PPCA0030EMENTA:  Tópicos de interesse atual em pesquisa e desenvolvimento em Mineração de Dados.
-BIBLIOGRAFIA:
-Artigos em periódicos ou congressos da área.
-3 Página 2de Para verificar a autenticidade deste documento entre em  https://sig.unb.br/sigaa/documentos/ informando a matrícula, data de emissão e o
-código de verificação:  0bd0b0deefHeitor Gomes Pereira Nome: Matrícula: 232103451Decanato de Pós-Graduação
+LEGISLAÇÃO ALTERADA  TEXTO ENCAMINHADO PELO EXECUTIVO  
+ Altera a Lei nº 9.427, de 26 de dezembro de 1996 , a Lei nº 
+9.991, de 24 de julho de 2000 , e a Lei nº 14.182, de 12 de 
+julho de 2021 , e dá outras providênc ias. 
+ O PRESIDENTE DA REPÚBLICA, no uso da atribuição que lhe 
+confere o art. 62 da Constituição, adota a seguinte Medida 
+Provisória, com força de lei:  
+Lei nº 9.427, de 26 de dezembr o de 1996  Art. 1º  A Lei nº 9.427, de 26 de dezembro de 1996 , passa a 
+vigorar com as seguintes alterações:  
+Art. 26.   Cabe ao Poder Concedente, diretamente ou 
+mediante delegação à ANEEL, autorizar:  
+..............................................................................................  “Art. 26. ................... .......................... ...................................  
+.................................................... ..................................... ..... 
+ § 1º-K Os empreendimentos enquadrados no disposto no § 
+1º-C deste artigo que, em até doze meses da publicação da 
+Lei nº 14. 120, de 1º de março de 2021 , tenham solicitado a 
+outorga ou a alteração de outorga que resulte em aumento 
+na capacidade instalada, poderão requerer prorrogação de 
+trinta e seis meses dos prazos previstos nos incisos I e II do 
+§ 1º -C, para início da operaçã o de todas as suas unidades 
+geradoras, mantido o direito aos percentuais de redução de 
+que tratam os § 1º, § 1º -A e § 1º -B, mediante requerimento 
+por seus titulares à Aneel, no prazo de sessenta dias, 
+contado da data de publicação da Medida Provisória nº 
+1.212, de 9 de abril de 2024 . 
+ § 1º-L Para manterem o direito ao prazo adicional previsto 
+no § 1º -K, os empreendedores, independentemente da 
+fonte de geração, aportarão garantia de fiel cumprimento 
+em até noventa dias e iniciarão as obras do 
+empreendimento  em até dezoito meses, ambos os prazos 
+contados da data de publicação da Medida Provisória nº 
+1.212, de 2024 , observados os seguintes parâmetros:  
+ I - o valor da garantia de fiel cumprimento será 
+correspondente a cinco por cento do valor estimado do 
+empre endimento, a ser estabelecido em ato do Ministério 
+de Minas e Energia;  
+ II - a garantia de fiel cumprimento terá a Aneel como 
+beneficiária e o interessado como tomador e vigorará por 
+até seis meses após a entrada em operação comercial da 
+última unidade geradora do empreendimento;  
+ III - as garantias de fiel cumprimento serão aporta das na 
+Aneel ou em agente custodiante contratado pela Aneel;  
+ IV - o início das obras será caracterizado nos termos 
+estabelecidos pelo Ministério de Minas e Energia;  
+ V - o empreendedor deverá optar por uma das seguintes 
+modalidades de garantia:  
  
- SIGAA - Sistema Integrado de Gestão de Atividades Acadêmicas
-UnB - Universidade de Brasília
-Campus Darcy Ribeiro -Centro de Vivência, Térreo- Asa Norte - CEP 70910-900
-Histórico Escolar - Emitido em: 26/04/2024 às 07:47
-Componentes Curriculares Obrigatórios Pendentes:5
-Componente Curricular CH Código
-0 h
-PPCA0046EMENTA:  Seminário de acompanhamento da pesquisa sendo realizada pelo aluno, com definição do problema objeto de estudo, solução proposta, avanços
-obtidos, etapas a serem realizadas, dificuldades encontradas e visão da contribuição científica, tecnológica ou inovação potencial.
-SEMINÁRIO DE ACOMPANHAMENTO I
-0 h
-PPCA0047EMENTA:  Seminário de acompanhamento da pesquisa sendo realizada pelo aluno, com definição do problema objeto de estudo, solução proposta, avanços
-obtidos, etapas a serem realizadas, dificuldades encontradas e visão da contribuição científica, tecnológica ou inovação potencial.
-SEMINÁRIO DE ACOMPANHAMENTO 2
-0 h
-PPGI2096EMENTA:  A definir.
-EXAME DE MESTRADO
-0 h
-PPGI2097EMENTA:
-PROFICIÊNCIA EM INGLÊS
-0 h
-DPG9200EMENTA:  Trabalho final de autoria exclusiva, defendida em sessão pública e aprovada por uma Comissão Examinadora.
-DEFESA DE TRABALHO FINALCarga Horária Integralizada/Pendente
-Exigido
-Integralizado
-Pendente* 0 h180 h180 hObrigatórias Optativos
-180 h
-0 h
-180 hTotal
-360 h
-180 h
-180 h
-*Contabilizado com base no valor estabelecido no mínimo exigido da estrutura curricular.
-Atenção, agora o histórico possui uma verificação automática de autenticidade e consistência, sendo portanto dispensável a assinatura da coordenação do curso ou DPG.
-Favor, ler instruções no rodapé.
-3 Página 3de Para verificar a autenticidade deste documento entre em  https://sig.unb.br/sigaa/documentos/ informando a matrícula, data de emissão e o
-código de verificação:  0bd0b0deef
+Elaborado pela Secretaria Legislativa do Congresso Nacional - Telefone: 3303 -4050  
+(Elaboração: 15/04/2024 15:02 ) 
+ Quadro Comparativo  
+Medida Provisória nº 1212/2024  Secretaria Legislativa do Congresso Nacional - SLCN  
+  
+ 
+LEGISLAÇÃO ALTERADA  TEXTO ENCAMINHADO PELO EXECUTIVO  
+ a) cau ção em dinheiro ou em títulos da dívida pública 
+emitidos sob a forma escritural, mediante registro em 
+sistema centralizado de liquidação e de custódia autorizado 
+pelo Banco Central do Brasil, e avaliados por seus valores 
+econômicos, conforme estabelecido p elo Ministério da 
+Fazenda;  
+ b) fiança bancária emitida por banco ou instituição 
+financeira autorizada pelo Banco Central do Brasil a operar 
+no País; e  
+ c) seguro - garantia; e  
+ VI - a execução da garantia de fiel cumprimento dependerá 
+de determinação expressa da Aneel, nas seguintes 
+hipóteses:  
+ a) não início das obras do empreendimento outorgado no 
+prazo previsto no § 1º -L; 
+ b) não implantação do empreendimento outorgado no 
+prazo pre visto no § 1º -K; 
+ c) descumprimento das condições previstas no ato 
+autorizativo quanto à potência instalada; ou  
+ d) revogação da outorga de autorização.  
+ 
+ 
+ 
+ 
+ 
+ § 1º-M A garantia de fiel cumprimento poderá ser utilizada 
+para cobrir penalidades aplicadas pela inobservância total 
+ou parcial às obrigações previstas na outorga de 
+autorização, assegurados os princípios do contraditório e 
+da ampla defesa, mediante execução até o limite de seu 
+valor, em qualquer modalidade, por determinação expressa 
+da Aneel.  
+ 
+ 
+ 
+ 
+ 
+ § 1º -N A Aneel firmará termo de adesão com os 
+empreendedores de que tratam o § 1º -K deste artigo, o 
+qual conterá os requisitos e as condicionantes previstos na 
+Medida Provisória nº 1.212, de 2024 , no prazo de quarenta 
+e cinco dias, contado da solicitação.  
+............................................................ ............................... ... 
+Lei nº 9.991, de 24 de julho de 2000  Art. 2º  A Lei nº 9.991, de 24 de julho de 2000 , passa a 
+vigorar com as seguintes alterações:  
+Art. 5º -B.  Os recursos de que tratam o inciso II do caput do 
+art. 4º e a alínea “a” do inciso I do caput do art. 5º desta Lei 
+não comprometidos com projetos contratados ou iniciados 
+deverão ser destinados à CDE em favor da modicidade 
+tarifária entre 1º de setembro de 2020 e 31 de dezembro 
+de 2025.  
+..............................................................................................  “Art. 5º -B. ............................. ................................................  
+........................................................ .............. ................. .......  
+ 
+Elaborado pela Secretaria Legislativa do Congresso Nacional - Telefone: 3303 -4050  
+(Elaboração: 15/04/2024 15:02 ) 
+ Quadro Comparativo  
+Medida Provisória nº 1212/2024  Secretaria Legislativa do Congresso Nacional - SLCN  
+  
+ 
+LEGISLAÇÃO ALTERADA  TEXTO ENCAMINHADO PELO EXECUTIVO  
+§ 2º Os recursos de que tratam o inciso II do caput do art. 
+4º e a alínea “a” do inciso I do caput do art. 5º não 
+comprometidos com projetos contratados ou iniciados até 
+1º de setembro de 2020 e aqueles relativos a projetos 
+reprov ados ou cuja execução não tenha sido comprovada 
+serão destinados à CDE em favor da modicidade tarifária, 
+conforme regulamento da Aneel.  § 2º Os recursos de que tratam o inciso II do caput do art. 
+4º e a alínea “a” do inciso I do caput do art. 5º não 
+compr ometidos com projetos contratados ou iniciados até 
+1º de setembro de 2020 e aqueles relativos a projetos 
+reprovados ou cuja execução não tenha sido comprovada 
+serão revertidos às tarifas ou  destinados à CDE , em favor da 
+modicidade tarifária, conforme estabelecido pelo 
+Ministério de Minas e Energia .” (NR)  
+Lei nº 14.182, de 12 de julho de 2021  Art. 3º  A Lei nº 14.182, de 12 de julho de 2021 , passa a 
+vigorar com as seguintes alterações:  
+ “Art. 3º -A Dos recursos previstos no art. 7º e destinados à 
+redução estrutural de custos de geração de energia na 
+Amazônia Legal de que trata a alínea “b” do inciso V do 
+caput do art. 3º poderão ser abatidos montantes 
+destinados à modicidade tarifária, conforme decisão do 
+Ministério de Minas e Energia, respeitados os projetos 
+contratados.  
+ Parágrafo único. Os valores destinados à modicidade 
+tarifária nos termos do disposto no caput serão aplicados 
+exclusivamente nas concessões de distribuição dos Estados 
+localizados nas áreas de influência de cada programa de 
+que trata a alínea “b” do inciso V do caput do art. 3º. ” (NR)  
+Art. 7º  Constituirá obrigação da concessionária signatária 
+do Contrato de Concessão nº 007/2004 -Aneel -Eletronorte, 
+observado o disposto no  caput  do art. 1º desta Lei , para o 
+cumprimento da medida de que trata a alínea b do inciso V 
+do caput  do art. 3º desta Lei, o aporte de 
+R$ 295.000.000,00 (duzentos e noventa e cinco milhões de 
+reais) anuais, pelo prazo de 10 (dez) anos, atualizados pelo 
+IPCA, divulgado pelo IBGE, ou por outro índice que vier a 
+substituí -lo, a partir do mês de assinatura do novo contrato 
+de concessão, para a plicação no programa de redução 
+estrutural de custos de geração de energia na Amazônia 
+Legal e, no mínimo, 20% (vinte por cento) em ações para 
+garantir a navegabilidade do Rio Madeira e 10% (dez por 
+cento) em ações para garantir a navegabilidade do Rio 
+Tocantins.  
+..............................................................................................   “Art. 7º Constituirá obrigação da concessionária signatária 
+do Contrato de Concessão nº 007/2004 -Aneel -Eletronorte, 
+observado o disposto no caput do art . 1º  ^, para o 
+cumprimento da medida de que tratam  a alínea “b” do 
+inciso V do caput do art. 3º  ^ e o art. 3º -A, o aporte de 
+R$ 295.000.000,00 (duzentos e noventa e cinco milhões de 
+reais) anuais, pelo prazo de 10 (dez) anos, atualizados pelo 
+IPCA, divulgado pelo IBGE, ou por outro índice que vier a 
+substituí -lo, a partir do mês de assinatura do novo contrato 
+de con cessão, para aplicação no programa de redução 
+estrutural de custos de geração de energia na Amazônia 
+Legal e, no mínimo, 20% (vinte por cento) em ações para 
+garantir a navegabilidade do Rio Madeira e 10% (dez por 
+cento) em ações para garantir a navegabilid ade do Rio 
+Tocantins.  
+......................................... ............................... ......................  
+ Art. 4º  Fica a Câmara de Comercialização de Energia 
+Elétrica - CCEE autorizada, mediante diretrizes 
+estabelecidas em portaria conjunta do  Ministério de Minas 
+e Energia e do Ministério da Fazenda, a negociar a 
+antecipação dos recebíveis da Conta de Desenvolvimento 
+Energético - CDE, de que trata o inciso I do caput do art. 4º 
+da Lei nº 14.182, de 2021 , desde que caracterizado o 
+benefício para o consumidor.  
+ 
+Elaborado pela Secretaria Legislativa do Congresso Nacional - Telefone: 3303 -4050  
+(Elaboração: 15/04/2024 15:02 ) 
+ Quadro Comparativo  
+Medida Provisória nº 1212/2024  Secretaria Legislativa do Congresso Nacional - SLCN  
+  
+ 
+LEGISLAÇÃO ALTERADA  TEXTO ENCAMINHADO PELO EXECUTIVO  
+ Parágrafo único. Os recursos antecipados de que trata o 
+caput serão exclusivamente utilizados para fins da 
+modicidade tarifária dos consumidores do ambiente 
+regulado, conforme diretriz estabelecida pelo poder 
+concedente, prioritariamente para:  
+ I - quitação antecipada da Conta -Covid, de que trata o 
+Decreto nº 10.350, de 18 de maio de 2020 ; e 
+ II - quitação antecipada da Conta Escassez Hídrica, de que 
+trata o Decreto nº 10.939, de 13 de janeiro de 2022 .  
+ Art. 5º  Esta Medida Provisória entra em vigor na data de 
+sua publicação.  
+ 
