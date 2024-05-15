@@ -1,0 +1,27 @@
+DataHoraInicioReuniao;NumeroReuniaoColegiado;TipoReuniao;NomeColegiado;IdentificacaoMateria;DescricaoIdentificacaoMateria;DescricaoVotacao;QuantidadesDeVotosSim;QuantidadesDeVotosNAO;Abstenção;Total
+2024-05-08T09:55:00;11;Extraordinária;Comissão de Constituição, Justiça e Cidadania;PL 1958/2021;Projeto de Lei n° 1958, de 2021;Emenda nº 20-S ao Substitutivo oferecido ao PL 1958/2021;22;1;0;23
+
+NomeParlamentar;SiglaPartidoParlamentar;QualidadeVoto;VotoPresidente
+Renan Calheiros;MDB;S;false
+Alessandro Vieira;MDB;S;false
+Weverton;PDT;S;false
+Ana Paula Lobato;PDT;S;false
+Izalci Lucas;PL;S;false
+Flávio Bolsonaro;PL;S;false
+Carlos Portinho;PL;S;false
+Marcos Rogério;PL;S;false
+Rogerio Marinho;PL;S;false
+Oriovisto Guimarães;PODEMOS;S;false
+Esperidião Amin;PP;S;false
+Angelo Coronel;PSD;S;false
+Otto Alencar;PSD;S;false
+Eliziane Gama;PSD;S;false
+Lucas Barreto;PSD;S;false
+Plínio Valério;PSDB;S;false
+Humberto Costa;PT;S;false
+Fabiano Contarato;PT;S;false
+Jaques Wagner;PT;S;false
+Janaína Farias;PT;S;false
+Hamilton Mourão;REPUBLICANOS;N;false
+Sergio Moro;UNIÃO;S;false
+Professora Dorinha Seabra;UNIÃO;S;false

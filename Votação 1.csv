@@ -1,85 +1,101 @@
-Descricao Votacao;Ementa;Votos Sim;Votos Não;Votos do Presindente;Abstenção;PNRV;Total;Resultado;Secreta;Orientação do Governo
-Votação nominal da PEC nº 162/2019, nos termos do Parecer, com adequação redacional de Plenário (1º Turno).;Altera a redação do inciso VIII-A do caput do art. 93 da Constituição Federal, para permitir a permuta entre juízes de direito vinculados a diferentes tribunais.;67;0;1;9;4;81;Aprovada;Não;SIM
+DataSessao;2023-05-16
 
-DataSessao;NomeParlamentar;SiglaPartido;SiglaUF;Voto
-2023-05-16;Esperidião Amin;PP;SC;Sim
-2023-05-16;Jader Barbalho;MDB;PA;AP
-2023-05-16;Renan Calheiros;MDB;AL;Sim
-2023-05-16;Marcio Bittar;UNIÃO;AC;P-NRV
-2023-05-16;Flávio Arns;PSB;PR;Sim
-2023-05-16;Chico Rodrigues;PSB;RR;Sim
-2023-05-16;Confúcio Moura;MDB;RO;Sim
-2023-05-16;Jaques Wagner;PT;BA;Sim
-2023-05-16;Magno Malta;PL;ES;Sim
-2023-05-16;Ciro Nogueira;PP;PI;Sim
-2023-05-16;Marcelo Castro;MDB;PI;Sim
-2023-05-16;Paulo Paim;PT;RS;Sim
-2023-05-16;Wellington Fagundes;PL;MT;Sim
-2023-05-16;Luis Carlos Heinze;PP;RS;Sim
-2023-05-16;Eduardo Gomes;PL;TO;Sim
-2023-05-16;Zequinha Marinho;PL;PA;Sim
-2023-05-16;Davi Alcolumbre;UNIÃO;AP;Sim
-2023-05-16;Jayme Campos;UNIÃO;MT;Sim
-2023-05-16;Sérgio Petecão;PSD;AC;Sim
-2023-05-16;Beto Faro;PT;PA;Sim
-2023-05-16;Efraim Filho;UNIÃO;PB;Sim
-2023-05-16;Rogerio Marinho;PL;RN;Sim
-2023-05-16;Izalci Lucas;PSDB;DF;Sim
-2023-05-16;Laércio Oliveira;PP;SE;Sim
-2023-05-16;Eduardo Braga;MDB;AM;P-NRV
-2023-05-16;Humberto Costa;PT;PE;AP
-2023-05-16;Randolfe Rodrigues;REDE;AP;Sim
-2023-05-16;Wilder Morais;PL;GO;Sim
-2023-05-16;Romário;PL;RJ;AP
-2023-05-16;Rogério Carvalho;PT;SE;Sim
-2023-05-16;Mara Gabrilli;PSD;SP;Sim
-2023-05-16;Irajá;PSD;TO;Sim
-2023-05-16;Professora Dorinha Seabra;UNIÃO;TO;Sim
-2023-05-16;Weverton;PDT;MA;Sim
-2023-05-16;Plínio Valério;PSDB;AM;Sim
-2023-05-16;Otto Alencar;PSD;BA;Sim
-2023-05-16;Omar Aziz;PSD;AM;Sim
-2023-05-16;Alan Rick;UNIÃO;AC;Sim
-2023-05-16;Eliziane Gama;PSD;MA;Sim
-2023-05-16;Rodrigo Pacheco;PSD;MG;Presidente (art. 51 RISF)
-2023-05-16;Tereza Cristina;PP;MS;Sim
-2023-05-16;Veneziano Vital do Rêgo;MDB;PB;Sim
-2023-05-16;Zenaide Maia;PSD;RN;Sim
-2023-05-16;Dr. Hiran;PP;RR;Sim
-2023-05-16;Flávio Bolsonaro;PL;RJ;Sim
-2023-05-16;Jorge Kajuru;PSB;GO;Sim
-2023-05-16;Vanderlan Cardoso;PSD;GO;P-NRV
-2023-05-16;Rodrigo Cunha;UNIÃO;AL;Sim
-2023-05-16;Fernando Dueire;MDB;PE;Sim
-2023-05-16;Oriovisto Guimarães;PODEMOS;PR;Sim
-2023-05-16;Lucas Barreto;PSD;AP;Sim
-2023-05-16;Carlos Portinho;PL;RJ;LS
-2023-05-16;Marcos do Val;PODEMOS;ES;Sim
-2023-05-16;Fabiano Contarato;PT;ES;Sim
-2023-05-16;Styvenson Valentim;PODEMOS;RN;P-NRV
-2023-05-16;Angelo Coronel;PSD;BA;Sim
-2023-05-16;Cid Gomes;PDT;CE;AP
-2023-05-16;Eduardo Girão;NOVO;CE;Sim
-2023-05-16;Leila Barros;PDT;DF;Sim
-2023-05-16;Alessandro Vieira;PSDB;SE;Sim
-2023-05-16;Nelsinho Trad;PSD;MS;Sim
-2023-05-16;Soraya Thronicke;UNIÃO;MS;LS
-2023-05-16;Carlos Viana;PODEMOS;MG;Sim
-2023-05-16;Daniella Ribeiro;PSD;PB;Sim
-2023-05-16;Giordano;MDB;SP;Sim
-2023-05-16;Astronauta Marcos Pontes;PL;SP;MIS
-2023-05-16;Ivete da Silveira;MDB;SC;LS
-2023-05-16;Dr. Samuel Araújo;PSD;RO;LS
-2023-05-16;Mecias de Jesus;REPUBLICANOS;RR;Sim
-2023-05-16;Margareth Buzetti;PSD;MT;Sim
-2023-05-16;Sergio Moro;UNIÃO;PR;Sim
-2023-05-16;Damares Alves;REPUBLICANOS;DF;Sim
-2023-05-16;Cleitinho;REPUBLICANOS;MG;Sim
-2023-05-16;Teresa Leitão;PT;PE;Sim
-2023-05-16;Jaime Bagattoli;PL;RO;Sim
-2023-05-16;Hamilton Mourão;REPUBLICANOS;RS;Sim
-2023-05-16;Jorge Seif;PL;SC;Sim
-2023-05-16;Fernando Farias;MDB;AL;Sim
-2023-05-16;Augusta Brito;PT;CE;Sim
-2023-05-16;Ana Paula Lobato;PSB;MA;Sim
-2023-05-16;Jussara Lima;PSD;PI;Sim
+PEC 162/2019
+Altera a redação do inciso VIII-A do caput do art. 93 da Constituição Federal, para permitir a permuta entre juízes de direito vinculados a diferentes tribunais.
+Votação nominal da PEC nº 162/2019, nos termos do Parecer, com adequação redacional de Plenário (1º Turno).
+
+Secreta;Não
+
+Votos
+Votos Sim;67
+Votos Não;0
+Abstenção;9
+Votos do Presindente;1
+PNRV;4
+Total;81
+
+Resultado;Aprovada
+Orientação do Governo;SIM
+
+NomeParlamentar;SiglaPartido;SiglaUF;Voto
+Jader Barbalho;MDB;PA;AP
+Renan Calheiros;MDB;AL;Sim
+Confúcio Moura;MDB;RO;Sim
+Marcelo Castro;MDB;PI;Sim
+Eduardo Braga;MDB;AM;P-NRV
+Veneziano Vital do Rêgo;MDB;PB;Sim
+Fernando Dueire;MDB;PE;Sim
+Giordano;MDB;SP;Sim
+Ivete da Silveira;MDB;SC;LS
+Fernando Farias;MDB;AL;Sim
+Eduardo Girão;NOVO;CE;Sim
+Weverton;PDT;MA;Sim
+Cid Gomes;PDT;CE;AP
+Leila Barros;PDT;DF;Sim
+Magno Malta;PL;ES;Sim
+Wellington Fagundes;PL;MT;Sim
+Eduardo Gomes;PL;TO;Sim
+Zequinha Marinho;PL;PA;Sim
+Rogerio Marinho;PL;RN;Sim
+Wilder Morais;PL;GO;Sim
+Romário;PL;RJ;AP
+Flávio Bolsonaro;PL;RJ;Sim
+Carlos Portinho;PL;RJ;LS
+Astronauta Marcos Pontes;PL;SP;MIS
+Jaime Bagattoli;PL;RO;Sim
+Jorge Seif;PL;SC;Sim
+Oriovisto Guimarães;PODEMOS;PR;Sim
+Marcos do Val;PODEMOS;ES;Sim
+Styvenson Valentim;PODEMOS;RN;P-NRV
+Carlos Viana;PODEMOS;MG;Sim
+Esperidião Amin;PP;SC;Sim
+Ciro Nogueira;PP;PI;Sim
+Luis Carlos Heinze;PP;RS;Sim
+Laércio Oliveira;PP;SE;Sim
+Tereza Cristina;PP;MS;Sim
+Dr. Hiran;PP;RR;Sim
+Flávio Arns;PSB;PR;Sim
+Chico Rodrigues;PSB;RR;Sim
+Jorge Kajuru;PSB;GO;Sim
+Ana Paula Lobato;PSB;MA;Sim
+Sérgio Petecão;PSD;AC;Sim
+Mara Gabrilli;PSD;SP;Sim
+Irajá;PSD;TO;Sim
+Otto Alencar;PSD;BA;Sim
+Omar Aziz;PSD;AM;Sim
+Eliziane Gama;PSD;MA;Sim
+Rodrigo Pacheco;PSD;MG;Presidente (art. 51 RISF)
+Zenaide Maia;PSD;RN;Sim
+Vanderlan Cardoso;PSD;GO;P-NRV
+Lucas Barreto;PSD;AP;Sim
+Angelo Coronel;PSD;BA;Sim
+Nelsinho Trad;PSD;MS;Sim
+Daniella Ribeiro;PSD;PB;Sim
+Dr. Samuel Araújo;PSD;RO;LS
+Margareth Buzetti;PSD;MT;Sim
+Jussara Lima;PSD;PI;Sim
+Izalci Lucas;PSDB;DF;Sim
+Plínio Valério;PSDB;AM;Sim
+Alessandro Vieira;PSDB;SE;Sim
+Jaques Wagner;PT;BA;Sim
+Paulo Paim;PT;RS;Sim
+Beto Faro;PT;PA;Sim
+Humberto Costa;PT;PE;AP
+Rogério Carvalho;PT;SE;Sim
+Fabiano Contarato;PT;ES;Sim
+Teresa Leitão;PT;PE;Sim
+Augusta Brito;PT;CE;Sim
+Randolfe Rodrigues;REDE;AP;Sim
+Mecias de Jesus;REPUBLICANOS;RR;Sim
+Damares Alves;REPUBLICANOS;DF;Sim
+Cleitinho;REPUBLICANOS;MG;Sim
+Hamilton Mourão;REPUBLICANOS;RS;Sim
+Marcio Bittar;UNIÃO;AC;P-NRV
+Davi Alcolumbre;UNIÃO;AP;Sim
+Jayme Campos;UNIÃO;MT;Sim
+Efraim Filho;UNIÃO;PB;Sim
+Professora Dorinha Seabra;UNIÃO;TO;Sim
+Alan Rick;UNIÃO;AC;Sim
+Rodrigo Cunha;UNIÃO;AL;Sim
+Soraya Thronicke;UNIÃO;MS;LS
+Sergio Moro;UNIÃO;PR;Sim

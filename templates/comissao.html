@@ -28,22 +28,50 @@
  <br>
  
  <center>
+  <div id="load">
+    
+    <div class="spinner-grow text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-secondary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-success" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-danger" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-warning" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-info" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-light" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-dark" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+
+  </div>
   <div class="glass-login-form">
     <br>
   <form enctype="multipart/form-data" method="post">
     {% csrf_token %}
   <div class="mb-3">
     <h3>Informe a Data ínicio</h3>
-    <input class="form-control" type="date" id="formFile" name="myfile" required>
+    <input class="form-control" type="date" id="formFile" name="data1" required>
   </div>
   <br>
   <div class="mb-3">
     <h3>Informe a Data fim</h3>
-    <input class="form-control" type="date" id="formFile2" name="myfile2" required>
+    <input class="form-control" type="date" id="formFile2" name="data2" required>
   </div>
   <br>
  
-  <button type="submit" class="btn btn-light">Enviar</button>
+  <button type="submit" class="btn btn-light" onclick="myFunction()">Enviar</button>
 </form>
 </div>
 </center>
@@ -68,5 +96,28 @@
       width: 450px;
       border-radius: 10px;
     }
+
+    #load{
+    visibility: hidden;
+  
+  }
   
   </style>
+
+
+<script>
+  function myFunction() {
+
+  var state = document.readyState
+
+  document.getElementById('contents').style.visibility="hidden";
+  document.getElementById('load').style.visibility="visible";
+   if (state == 'complete') {
+      setTimeout(function(){
+         document.getElementById('interactive');
+         document.getElementById('load').style.visibility="hidden";
+         document.getElementById('contents').style.visibility="visible";
+      },2000);
+  }
+}
+</script>

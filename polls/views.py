@@ -115,8 +115,10 @@ def plenario(request):
                 mtr= "Sem Ementa"
                 res = ""
                 secreta=""
+                d= ""
                 l = [] 
                 orientada = []
+                id = ""
                 
 
                 if 'Materia' in materia:
@@ -124,6 +126,8 @@ def plenario(request):
                     mtr = materia
                     desc= i['DescricaoVotacao']
                     d = i['DataSessao']
+
+                    id = i['DescricaoIdentificacaoMateria']
                     if i['Resultado']=="A":
                             res ="Aprovada"
                     else:
@@ -149,7 +153,7 @@ def plenario(request):
                         
 
                         
-                        l.append([d,j['NomeParlamentar'],j['SiglaPartido'],j['SiglaUF'],j['Voto']])
+                        l.append([j['NomeParlamentar'],j['SiglaPartido'],j['SiglaUF'],j['Voto']])
 
 
                      
@@ -159,6 +163,7 @@ def plenario(request):
 
                     desc= i['DescricaoVotacao']
                     d = i['DataSessao']
+                    id = i['DescricaoIdentificacaoMateria']
                     if i['Resultado']=="A":
                             res ="Aprovada"
                     else:
@@ -183,7 +188,7 @@ def plenario(request):
                             abss+=1
                 
                        
-                        l.append([d,j['NomeParlamentar'],j['SiglaPartido'],j['SiglaUF'],j['Voto']])
+                        l.append([j['NomeParlamentar'],j['SiglaPartido'],j['SiglaUF'],j['Voto']])
 
                 api_end_point3 = "https://legis.senado.leg.br/dadosabertos/plenario/votacao/orientacaoBancada/"+action
                 joke = requests.get(api_end_point3)
@@ -204,29 +209,61 @@ def plenario(request):
                                         print("teste")
                                         flag =1
                                         total = sim+nao+presidente+abss+pnrv
-                                        orientada.append([desc,mtr,sim,nao,presidente,abss,pnrv,total,res,secreta, j['voto']])
+                                        orientada.append([d,desc,mtr,sim,nao,presidente,abss,pnrv,total,res,secreta, j['voto']])
                                         break
                                 if flag==1:
                                     break
                         if flag==0:
                             total = sim+nao+presidente+abss+pnrv
-                            orientada.append([desc,mtr,sim,nao,presidente,abss,pnrv,total,res,secreta,"SEM ORIENTAÇÃO"])
+                            orientada.append([d,desc,mtr,sim,nao,presidente,abss,pnrv,total,res,secreta,"SEM ORIENTAÇÃO"])
 
                 print(cont)
                 z = open("Votação "+str(cont)+ ".csv",'w+')
-                        
+                print(orientada)   
+                l.sort(key=lambda x:x[1])     
                 with open("Votação "+str(cont)+ ".csv",'w', newline='') as csvfile:
                         writer = csv.writer(csvfile,delimiter =';')
 
                         # Write data for table 1
-                        writer.writerow(['Descricao Votacao','Ementa','Votos Sim','Votos Não',"Votos do Presindente","Abstenção","PNRV","Total","Resultado","Secreta","Orientação do Governo"])
-                        writer.writerows(orientada)
+                        writer.writerow(["DataSessao",orientada[0][0]])
+                      
+
+                        # Add an empty line between tables
+                        writer.writerow([])
+                        
+                        writer.writerow([id])
+                        # Write data for table 1
+                        writer.writerow([orientada[0][2]])
+                        writer.writerow([orientada[0][1]])
+
+                        # Add an empty line between tables
+                        writer.writerow([])
+
+                        # Add an empty line between tables
+                        writer.writerow(["Secreta",orientada[0][-2]])
+
+                    
+                        # Add an empty line between tables
+                        writer.writerow([])
+                        writer.writerow(["Votos"])
+                        writer.writerow(["Votos Sim",orientada[0][3]])
+                        writer.writerow(["Votos Não",orientada[0][4]])
+                        writer.writerow(["Abstenção",orientada[0][6]])
+                        writer.writerow(["Votos do Presindente",orientada[0][5]])
+                        writer.writerow(["PNRV",orientada[0][7]])
+                        writer.writerow(["Total",orientada[0][8]])
+
+                        # Add an empty line between tables
+                        writer.writerow([])
+                        
+                        writer.writerow(["Resultado",orientada[0][-3]])
+                        writer.writerow(["Orientação do Governo",orientada[0][-1]])
 
                         # Add an empty line between tables
                         writer.writerow([])
 
                         # Write data for table 2
-                        writer.writerow(['DataSessao','NomeParlamentar','SiglaPartido','SiglaUF','Voto'])
+                        writer.writerow(['NomeParlamentar','SiglaPartido','SiglaUF','Voto'])
                         writer.writerows(l)
                 cont+=1
                 csvfile.close()
@@ -240,6 +277,83 @@ def plenario(request):
 def comissao(request):
 
     if request.method=="POST":
-        print("ok")
+       
+        data = request.POST
+        ini = data.get("data1")
+        fim = data.get("data2")
         
+        ini = ini.replace("-","")
+        fim = fim.replace("-","")
+
+        print(ini,fim)
+
+        api_end_point = "https://legis.senado.leg.br/dadosabertos/votacaoComissao/comissao/CCJ?dataInicio="+ini+"&"+"dataFim="+fim
+        joke = requests.get(api_end_point)
+        xpars = xmltodict.parse(joke.text)
+        votos = xpars['VotacoesComissao']
+
+        if "Votacoes" not in votos:
+            print("Não teve votação nesse intervalo")
+
+        else:
+            votos = xpars['VotacoesComissao']['Votacoes']
+            
+            DataHoraInicioReuniao = ""
+            NumeroReuniaoColegiado = ""
+            TipoReuniao = ""
+            NomeColegiado = ""
+            IdentificacaoMateria = ""
+            DescricaoIdentificacaoMateria =""
+            DescricaoVotacao = ""
+            
+            
+            for i in range(len(votos['Votacao'])):
+               
+                
+                sim = 0
+                nao = 0
+                presidente  = 0 
+                abss = 0 
+                pnrv=0
+                total = 0
+                header = []
+                DataHoraInicioReuniao = votos['Votacao'][i]['DataHoraInicioReuniao']
+                NumeroReuniaoColegiado = votos['Votacao'][i]['NumeroReuniaoColegiado']
+                TipoReuniao = votos['Votacao'][i]['TipoReuniao']
+                NomeColegiado =  votos['Votacao'][i]['NomeColegiado']
+                IdentificacaoMateria =  votos['Votacao'][i]['IdentificacaoMateria']
+                DescricaoIdentificacaoMateria = votos['Votacao'][i]['DescricaoIdentificacaoMateria']
+                DescricaoVotacao = votos['Votacao'][i]['DescricaoVotacao']
+
+                print(votos['Votacao'][i]['IdentificacaoMateria'])
+               
+                body = []
+                cont=0    
+
+                for j in votos['Votacao'][i]['Votos']['Voto']:
+                    print(j)
+                    body.append([j['NomeParlamentar'],j['SiglaPartidoParlamentar'],j['QualidadeVoto'],j['VotoPresidente']])
+                
+                header.append([DataHoraInicioReuniao,NumeroReuniaoColegiado,TipoReuniao,NomeColegiado,IdentificacaoMateria,DescricaoIdentificacaoMateria,DescricaoVotacao,votos['Votacao'][i]['TotalVotosSim'],votos['Votacao'][i]['TotalVotosNao'],votos['Votacao'][i]['TotalVotosAbstencao'],int(votos['Votacao'][i]['TotalVotosSim'])+int(votos['Votacao'][i]['TotalVotosNao'])+int(votos['Votacao'][i]['TotalVotosAbstencao'])])
+    
+                z = open("Votação "+str(cont)+ ".csv",'w+')
+                body.sort(key=lambda x:x[1])    
+
+                with open("Votação "+str(cont)+ ".csv",'w', newline='') as csvfile:
+                        writer = csv.writer(csvfile,delimiter =';')
+
+                        # Write data for table 1
+                        writer.writerow(['DataHoraInicioReuniao','NumeroReuniaoColegiado','TipoReuniao','NomeColegiado','IdentificacaoMateria',"DescricaoIdentificacaoMateria","DescricaoVotacao","QuantidadesDeVotosSim","QuantidadesDeVotosNAO","Abstenção","Total"])
+                        writer.writerows(header)
+
+                        # Add an empty line between tables
+                        writer.writerow([])
+
+                        # Write data for table 2
+                        writer.writerow(['NomeParlamentar','SiglaPartidoParlamentar','QualidadeVoto','VotoPresidente'])
+                        writer.writerows(body)
+                cont+=1
+                csvfile.close()
+                z.close()
+    
     return render(request,'comissao.html')
