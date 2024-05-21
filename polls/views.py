@@ -225,10 +225,10 @@ def plenario(request):
                             orientada.append([d,desc,mtr,sim,nao,presidente,abss,pnrv,total,res,secreta,"SEM ORIENTAÇÃO"])
 
                 print(cont)
-                z = open("Votação "+str(cont)+ ".csv",'w+')
+                z = open("Votação "+str(cont)+ ".csv",'w+',encoding='iso-8859-1')
                 print(orientada)   
                 l.sort(key=lambda x:x[1])     
-                with open("Votação "+str(cont)+ ".csv",'w', newline='') as csvfile:
+                with open("Votação "+str(cont)+ ".csv",'w', newline='',encoding='iso-8859-1') as csvfile:
                         writer = csv.writer(csvfile,delimiter =';')
 
                         # Write data for table 1
