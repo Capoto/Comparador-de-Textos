@@ -373,7 +373,7 @@ def comissao(request):
                 z = open("Votação "+str(cont)+ ".csv",'w+')
                 body.sort(key=lambda x:x[1])    
 
-                with open("Votação "+str(cont)+ ".csv",'w', newline='') as csvfile:
+                with open("Votação "+str(cont)+ ".csv",'w', newline='',encoding='iso-8859-1') as csvfile:
                         writer = csv.writer(csvfile,delimiter =';')
 
                         # Write data for table 1
