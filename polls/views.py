@@ -3,24 +3,13 @@ from django.shortcuts import render
 from django.http import HttpResponse
 #from PyPDF2 import PdfReader
 from PyPDF2 import PdfReader
-import ollama
 import difflib
 from spire.doc import *
 from spire.doc.common import *
-import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt 
 import requests
-import json 
 import xml.etree.ElementTree as ET
 import xmltodict
-import seaborn as sns
-from operator import itemgetter
-from collections import OrderedDict
-import fpdf
-from fpdf import FPDF, HTMLMixin
-import plotly.figure_factory as ff
-from IPython.display import HTML
 import csv
 import zipfile
 import io
