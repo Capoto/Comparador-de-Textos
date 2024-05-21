@@ -370,7 +370,7 @@ def comissao(request):
                 horas = DataHoraInicioReuniao.split('T')
                 header.append([horas[0],NumeroReuniaoColegiado,TipoReuniao,NomeColegiado,IdentificacaoMateria,DescricaoIdentificacaoMateria,DescricaoVotacao,votos['Votacao'][i]['TotalVotosSim'],votos['Votacao'][i]['TotalVotosNao'],votos['Votacao'][i]['TotalVotosAbstencao'],int(votos['Votacao'][i]['TotalVotosSim'])+int(votos['Votacao'][i]['TotalVotosNao'])+int(votos['Votacao'][i]['TotalVotosAbstencao'])])
     
-                z = open("Votação "+str(cont)+ ".csv",'w+')
+                z = open("Votação "+str(cont)+ ".csv",'w+',encoding='iso-8859-1')
                 body.sort(key=lambda x:x[1])    
 
                 with open("Votação "+str(cont)+ ".csv",'w', newline='',encoding='iso-8859-1') as csvfile:
