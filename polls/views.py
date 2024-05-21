@@ -270,7 +270,7 @@ def plenario(request):
                         writer.writerow([])
 
                         # Write data for table 2
-                        writer.writerow(['NomeParlamentar','SiglaPartido','SiglaUF','Voto'])
+                        writer.writerow(['Parlamentar','Partido','UF','Voto'])
                         writer.writerows(l)
                 
                 lista.append(os.path.join(settings.MEDIA_ROOT,  "Votação "+str(cont)+ ".csv"))
