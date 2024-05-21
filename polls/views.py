@@ -22,6 +22,26 @@ from fpdf import FPDF, HTMLMixin
 import plotly.figure_factory as ff
 from IPython.display import HTML
 import csv
+import zipfile
+import io
+from django.conf import settings
+
+
+
+def download_zip(l,nome):
+    # create a zip file on-the-fly
+    buffer = io.BytesIO()
+    with zipfile.ZipFile(buffer, 'w') as zip_file:
+        # add files to the zip file
+        for i in l:
+            zip_file.write(i)
+        
+    
+    # create the HttpResponse object with the appropriate Content-Type header.
+    response = HttpResponse(buffer.getvalue(), content_type='application/x-zip-compressed')
+    # set the Content-Disposition header to force download of the file
+    response['Content-Disposition'] = 'attachment;filename='+nome+".zip"
+    return response 
 
 
 def index(request):
@@ -80,7 +100,7 @@ def index(request):
 
 
 def plenario(request):
-
+    lista = []
     if request.method=="POST":
         print("ok")
         data = request.POST
@@ -265,17 +285,22 @@ def plenario(request):
                         # Write data for table 2
                         writer.writerow(['NomeParlamentar','SiglaPartido','SiglaUF','Voto'])
                         writer.writerows(l)
+                
+                lista.append(os.path.join(settings.MEDIA_ROOT,  "Votação "+str(cont)+ ".csv"))
                 cont+=1
                 csvfile.close()
                 z.close()
-
-             
+            
+                
+              
+            return  download_zip(lista,"Plenario") 
                 
     return render(request,'plenario.html')
 
 
 def comissao(request):
 
+    lista=[]
     if request.method=="POST":
        
         data = request.POST
@@ -284,7 +309,7 @@ def comissao(request):
         
         ini = ini.replace("-","")
         fim = fim.replace("-","")
-
+        cont=1    
         print(ini,fim)
 
         api_end_point = "https://legis.senado.leg.br/dadosabertos/votacaoComissao/comissao/CCJ?dataInicio="+ini+"&"+"dataFim="+fim
@@ -325,16 +350,38 @@ def comissao(request):
                 DescricaoIdentificacaoMateria = votos['Votacao'][i]['DescricaoIdentificacaoMateria']
                 DescricaoVotacao = votos['Votacao'][i]['DescricaoVotacao']
 
-                print(votos['Votacao'][i]['IdentificacaoMateria'])
-               
+                t = votos['Votacao'][i]['IdentificacaoMateria']
+                t = t.split(" ")
+
+                sigla = t[0]
+
+                r = t[1].split('/')
+                
+                codigo = r[0]
+                ano = r[1]
+
+
+                api_end_point2 = "https://legis.senado.leg.br/dadosabertos/materia/"+sigla+"/"+codigo+"/"+ano
+                joke = requests.get(api_end_point2)
+                xpars = xmltodict.parse(joke.text)
+                materia = xpars['DetalheMateria']
+
+                ementa = "Sem ementa"
+
+                if "Materia" in  materia:
+      
+                    ementa = materia['Materia']['DadosBasicosMateria']['EmentaMateria']
+
+
+
                 body = []
-                cont=0    
+                
 
                 for j in votos['Votacao'][i]['Votos']['Voto']:
-                    print(j)
-                    body.append([j['NomeParlamentar'],j['SiglaPartidoParlamentar'],j['QualidadeVoto'],j['VotoPresidente']])
-                
-                header.append([DataHoraInicioReuniao,NumeroReuniaoColegiado,TipoReuniao,NomeColegiado,IdentificacaoMateria,DescricaoIdentificacaoMateria,DescricaoVotacao,votos['Votacao'][i]['TotalVotosSim'],votos['Votacao'][i]['TotalVotosNao'],votos['Votacao'][i]['TotalVotosAbstencao'],int(votos['Votacao'][i]['TotalVotosSim'])+int(votos['Votacao'][i]['TotalVotosNao'])+int(votos['Votacao'][i]['TotalVotosAbstencao'])])
+                    
+                    body.append([j['NomeParlamentar'],j['SiglaPartidoParlamentar'],j['QualidadeVoto']])
+                horas = DataHoraInicioReuniao.split('T')
+                header.append([horas[0],NumeroReuniaoColegiado,TipoReuniao,NomeColegiado,IdentificacaoMateria,DescricaoIdentificacaoMateria,DescricaoVotacao,votos['Votacao'][i]['TotalVotosSim'],votos['Votacao'][i]['TotalVotosNao'],votos['Votacao'][i]['TotalVotosAbstencao'],int(votos['Votacao'][i]['TotalVotosSim'])+int(votos['Votacao'][i]['TotalVotosNao'])+int(votos['Votacao'][i]['TotalVotosAbstencao'])])
     
                 z = open("Votação "+str(cont)+ ".csv",'w+')
                 body.sort(key=lambda x:x[1])    
@@ -343,17 +390,40 @@ def comissao(request):
                         writer = csv.writer(csvfile,delimiter =';')
 
                         # Write data for table 1
-                        writer.writerow(['DataHoraInicioReuniao','NumeroReuniaoColegiado','TipoReuniao','NomeColegiado','IdentificacaoMateria',"DescricaoIdentificacaoMateria","DescricaoVotacao","QuantidadesDeVotosSim","QuantidadesDeVotosNAO","Abstenção","Total"])
-                        writer.writerows(header)
+                        writer.writerow([header[0][3]])
+                        writer.writerow([header[0][0]])
+
+                        # Add an empty line between tables
+                        writer.writerow([])
+
+
+                      
+                        writer.writerow([header[0][5]])
+                      
+                        writer.writerow([ementa])
+                       
+                        writer.writerow([header[0][6]])
+
+                        # Add an empty line between tables
+                        writer.writerow([])
+
+                        
+                        writer.writerow(['Votos'])
+                        writer.writerow(['Votos Sim',header[0][7]])
+                        writer.writerow(['Votos Não',header[0][8]])
+                        writer.writerow(['Abstenção',header[0][9]])
+                        writer.writerow(['Total',header[0][10]])
 
                         # Add an empty line between tables
                         writer.writerow([])
 
                         # Write data for table 2
-                        writer.writerow(['NomeParlamentar','SiglaPartidoParlamentar','QualidadeVoto','VotoPresidente'])
+                        writer.writerow(['Parlamentar','Partido','Voto'])
                         writer.writerows(body)
+                lista.append(os.path.join(settings.MEDIA_ROOT,  "Votação "+str(cont)+ ".csv"))
                 cont+=1
                 csvfile.close()
                 z.close()
+        return  download_zip(lista,"Comissão")
     
     return render(request,'comissao.html')

@@ -1,27 +1,37 @@
-DataHoraInicioReuniao;NumeroReuniaoColegiado;TipoReuniao;NomeColegiado;IdentificacaoMateria;DescricaoIdentificacaoMateria;DescricaoVotacao;QuantidadesDeVotosSim;QuantidadesDeVotosNAO;Abstenção;Total
-2024-05-08T09:55:00;11;Extraordinária;Comissão de Constituição, Justiça e Cidadania;PL 1958/2021;Projeto de Lei n° 1958, de 2021;Emenda nº 20-S ao Substitutivo oferecido ao PL 1958/2021;22;1;0;23
+Comissão de Constituição, Justiça e Cidadania
+2024-05-08T09:55:00
 
-NomeParlamentar;SiglaPartidoParlamentar;QualidadeVoto;VotoPresidente
-Renan Calheiros;MDB;S;false
-Alessandro Vieira;MDB;S;false
-Weverton;PDT;S;false
-Ana Paula Lobato;PDT;S;false
-Izalci Lucas;PL;S;false
-Flávio Bolsonaro;PL;S;false
-Carlos Portinho;PL;S;false
-Marcos Rogério;PL;S;false
-Rogerio Marinho;PL;S;false
-Oriovisto Guimarães;PODEMOS;S;false
-Esperidião Amin;PP;S;false
-Angelo Coronel;PSD;S;false
-Otto Alencar;PSD;S;false
-Eliziane Gama;PSD;S;false
-Lucas Barreto;PSD;S;false
-Plínio Valério;PSDB;S;false
-Humberto Costa;PT;S;false
-Fabiano Contarato;PT;S;false
-Jaques Wagner;PT;S;false
-Janaína Farias;PT;S;false
-Hamilton Mourão;REPUBLICANOS;N;false
-Sergio Moro;UNIÃO;S;false
-Professora Dorinha Seabra;UNIÃO;S;false
+Projeto de Lei n° 1958, de 2021
+Sem ementa
+Emenda nº 14-S ao Substitutivo oferecido ao PL 1958/2021
+
+Votos
+QuantidadesDeVotosSim;11
+QuantidadesDeVotosNAO;12
+Abstenção;0
+Total;23
+
+NomeParlamentar;SiglaPartidoParlamentar;QualidadeVoto
+Renan Calheiros;MDB;N
+Alessandro Vieira;MDB;N
+Marcelo Castro;MDB;N
+Weverton;PDT;N
+Ana Paula Lobato;PDT;N
+Flávio Bolsonaro;PL;S
+Carlos Portinho;PL;S
+Marcos Rogério;PL;S
+Rogerio Marinho;PL;S
+Oriovisto Guimarães;PODEMOS;S
+Esperidião Amin;PP;S
+Angelo Coronel;PSD;N
+Otto Alencar;PSD;N
+Eliziane Gama;PSD;N
+Lucas Barreto;PSD;S
+Plínio Valério;PSDB;S
+Humberto Costa;PT;N
+Fabiano Contarato;PT;N
+Jaques Wagner;PT;N
+Janaína Farias;PT;N
+Mecias de Jesus;REPUBLICANOS;S
+Hamilton Mourão;REPUBLICANOS;S
+Sergio Moro;UNIÃO;S

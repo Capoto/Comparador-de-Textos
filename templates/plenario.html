@@ -57,13 +57,13 @@
   <form  enctype="multipart/form-data" method="post">
     {% csrf_token %}
   <div class="mb-3">
-    <h2>Informe a Data</h2>
+    <h2 class="text-secondary">Informe a Data</h2>
     <br>
     <input class="form-control" type="date"  name="plenariodata" required>
   </div>
   <br><br>
  
-  <button type="submit" class="btn btn-light" onclick="myFunction()">Enviar</button>
+  <button type="submit" class="btn btn-secondary" onclick="myFunction()">Enviar</button>
 </form>
 </center>
 </div>
@@ -73,9 +73,7 @@
 
     width: 300px;
   }
-  h2{
-    color: gray;
-  }
+  
   .btn{
     width: 300px;
    
@@ -93,6 +91,15 @@
   
   }
 
+ 
+  nav .navbar-nav li a:hover{
+  color: black !important;
+  }
+
+  .form-control:focus {
+        border-color: #adb5bd;
+        box-shadow: 0 0 0 0.2rem rgba(180, 167, 180, 0.25);
+    } 
 </style>
 
 <script>

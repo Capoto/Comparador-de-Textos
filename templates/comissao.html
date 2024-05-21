@@ -9,10 +9,10 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="plenario">Plenario</a>
+          <a class="nav-link" aria-current="page" href="plenario">Plenario</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="comissao">Comissão</a>
+          <a class="nav-link active" href="comissao">Comissão</a>
         </li>
      
       </ul>
@@ -61,17 +61,19 @@
   <form enctype="multipart/form-data" method="post">
     {% csrf_token %}
   <div class="mb-3">
-    <h3>Informe a Data ínicio</h3>
+    <h3 class="text-secondary">Informe a Data ínicio</h3>
+    <br>
     <input class="form-control" type="date" id="formFile" name="data1" required>
   </div>
   <br>
   <div class="mb-3">
-    <h3>Informe a Data fim</h3>
+    <h3 class="text-secondary">Informe a Data fim</h3>
+    <br>
     <input class="form-control" type="date" id="formFile2" name="data2" required>
   </div>
   <br>
  
-  <button type="submit" class="btn btn-light" onclick="myFunction()">Enviar</button>
+  <button type="submit" class="btn btn-secondary" onclick="myFunction()">Enviar</button>
 </form>
 </div>
 </center>
@@ -82,9 +84,7 @@
   
       width: 300px;
     }
-    h3{
-      color: gray;
-    }
+    
     .btn{
       width: 300px;
      
@@ -92,7 +92,7 @@
   
     .glass-login-form {
       background:  #e3f2fd;
-      height: 350px;
+      height: 390px;
       width: 450px;
       border-radius: 10px;
     }
@@ -101,7 +101,16 @@
     visibility: hidden;
   
   }
-  
+
+  .form-control:focus {
+        border-color: #adb5bd;
+        box-shadow: 0 0 0 0.2rem rgba(180, 167, 180, 0.25);
+    } 
+
+    nav .navbar-nav li a:hover{
+  color: black !important;
+  }  
+    
   </style>
 
 

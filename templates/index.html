@@ -2,14 +2,14 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
 <div class="container-fluid">
-    <a class="navbar-brand" href="index">Liderança do Governo</a>
+    <a class="navbar-brand active" href="index">Liderança do Governo</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="plenario">Plenario</a>
+          <a class="nav-link" aria-current="page" href="plenario">Plenario</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="comissao">Comissão</a>
@@ -23,35 +23,53 @@
 
 
 
- <br><br><br><br>
+ <br><br><br><br><br>
  
  <center>
+  <div class="glass-login-form">
+    <br>
   <form enctype="multipart/form-data" method="post">
     {% csrf_token %}
   <div class="mb-3">
-    <label for="formFile" class="form-label">Primeiro arquivo</label>
+    <h2 class="text-secondary">Primeiro arquivo</h2>
     <input class="form-control" type="file" id="formFile" name="myfile" required>
   </div>
-  <br><br>
+  <br>
   <div class="mb-3">
-    <label for="formFile" class="form-label" required>Segundo arquivo</label>
+    <h2 class="text-secondary">Segundo arquivo</h2>
     <input class="form-control" type="file" id="formFile"  name="myfile2" required>
   </div>
    <br> <br>
-  <button type="submit" class="btn btn-light">Enviar</button>
+  <button type="submit" class="btn btn-secondary">Enviar</button>
 </form>
+
+  </div>
 </center>
 
 <style>
 
-  .mb-3{
+  
+.mb-3{
+  
+  width: 300px;
+}
 
-    width: 20%;
-  }
+.btn{
+  width: 300px;
+ 
+}
+  .glass-login-form {
+      background:  #e3f2fd;
+      height: 390px;
+      width: 450px;
+      border-radius: 10px;
+    }
 
-  .btn{
-    width: 20%;
-    background-color: #e3f2fd;
-  }
+    .form-control:focus {
+        border-color: #adb5bd;
+        box-shadow: 0 0 0 0.2rem rgba(180, 167, 180, 0.25);
+    } 
+
+    
 
 </style>
