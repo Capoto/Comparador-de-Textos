@@ -6,9 +6,7 @@ from PyPDF2 import PdfReader
 import difflib
 from spire.doc import *
 from spire.doc.common import *
-import matplotlib.pyplot as plt 
 import requests
-import xml.etree.ElementTree as ET
 import xmltodict
 import csv
 import zipfile

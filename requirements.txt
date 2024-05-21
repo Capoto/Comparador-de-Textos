@@ -28,7 +28,7 @@ psycopg2-binary==2.9.9
 pycurl==7.45.2
 
 pyls-spyder==0.4.0
-
+Spire.Doc==12.4.0
 
 
 
