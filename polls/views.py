@@ -101,6 +101,7 @@ def plenario(request):
 
         if 'Votacoes' not in votos:
             print("Não teve votação nesse dia")
+            return render(request,'plenario.html',{'alerta': "verdadeiro"})
 
         else:
             
@@ -285,11 +286,13 @@ def plenario(request):
                 z.close()
             
                 
-            
+            if lista!=[]:    
 
-            return  download_zip(lista,"Plenario_"+ano[2]+"_"+ano[1]+"_"+ano[0]) 
+                return  download_zip(lista,"Plenario_"+ano[2]+"_"+ano[1]+"_"+ano[0]) 
+            
+            
                 
-    return render(request,'plenario.html')
+    return render(request,'plenario.html',{'alerta': "falso"})
 
 
 def comissao(request):
@@ -434,6 +437,7 @@ def comissao(request):
                 cont+=1
                 csvfile.close()
                 z.close()
-        return  download_zip(lista,"Comissão_"+nomecomiss+"_"+ano1[2]+"_"+ano1[1]+"_"+ano1[0])
+        if lista!=[]:
+            return  download_zip(lista,"Comissão_"+nomecomiss+"_"+ano1[2]+"_"+ano1[1]+"_"+ano1[0])
     
     return render(request,'comissao.html',{'comissao': comis})
