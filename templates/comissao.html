@@ -23,7 +23,7 @@
 
 
 
- <br><br><br><br>
+ <br><br><br>
  
  <br>
  
@@ -61,11 +61,20 @@
   <form enctype="multipart/form-data" method="post">
     {% csrf_token %}
   <div class="mb-3">
+  
+    <h3 class="text-secondary">Informe a Comissão</h3>
+    
+     <select  class="form-select" aria-label="Default select example" name="comiss"  onmousedown="if(this.options.length>5){this.size=5;}"  onchange='this.size=0;' >
+      {% for item in comissao %}
+      <option  >{{ item }}</option>
+      {% endfor %}
+     </select>
+     <br> 
     <h3 class="text-secondary">Informe a Data ínicio</h3>
     <br>
     <input class="form-control" type="date" id="formFile" name="data1" required>
   </div>
-  <br>
+
   <div class="mb-3">
     <h3 class="text-secondary">Informe a Data fim</h3>
     <br>
@@ -92,7 +101,7 @@
   
     .glass-login-form {
       background:  #e3f2fd;
-      height: 390px;
+      height: 470px;
       width: 450px;
       border-radius: 10px;
     }
@@ -103,6 +112,11 @@
   }
 
   .form-control:focus {
+        border-color: #adb5bd;
+        box-shadow: 0 0 0 0.2rem rgba(180, 167, 180, 0.25);
+    } 
+
+    .form-select:focus {
         border-color: #adb5bd;
         box-shadow: 0 0 0 0.2rem rgba(180, 167, 180, 0.25);
     } 

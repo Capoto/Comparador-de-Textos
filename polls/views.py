@@ -118,6 +118,7 @@ def plenario(request):
                 presidente  = 0 
                 abss = 0 
                 pnrv=0
+                ncom =0
                 desc = ""
                 mtr= "Sem Ementa"
                 res = ""
@@ -155,8 +156,10 @@ def plenario(request):
                             pnrv+=1
                         elif j['Voto']=='Presidente (art. 51 RISF)':
                             presidente+=1
-                        else:
+                        elif  j['Voto']=='Abstenção':
                             abss+=1
+                        elif j['Voto']=='NCom':
+                            ncom+=1
                         
 
                         
@@ -190,9 +193,11 @@ def plenario(request):
                         elif j['Voto']=='P-NRV':
                             pnrv+=1
                         elif j['Voto']=='Presidente (art. 51 RISF)':
-                            pnrv+=1
-                        else:
+                            presidente+=1
+                        elif  j['Voto']=='Abstenção':
                             abss+=1
+                        elif j['Voto']=='NCom':
+                            ncom+=1
                 
                        
                         l.append([j['NomeParlamentar'],j['SiglaPartido'],j['SiglaUF'],j['Voto']])
@@ -215,13 +220,13 @@ def plenario(request):
                                     if z=="Governo":
                                         print("teste")
                                         flag =1
-                                        total = sim+nao+presidente+abss+pnrv
+                                        total = sim+nao+presidente+abss+pnrv+ncom
                                         orientada.append([d,desc,mtr,sim,nao,presidente,abss,pnrv,total,res,secreta, j['voto']])
                                         break
                                 if flag==1:
                                     break
                         if flag==0:
-                            total = sim+nao+presidente+abss+pnrv
+                            total = sim+nao+presidente+abss+pnrv+ncom
                             orientada.append([d,desc,mtr,sim,nao,presidente,abss,pnrv,total,res,secreta,"SEM ORIENTAÇÃO"])
 
                 print(cont)
@@ -256,7 +261,8 @@ def plenario(request):
                         writer.writerow(["Votos Sim",orientada[0][3]])
                         writer.writerow(["Votos Não",orientada[0][4]])
                         writer.writerow(["Abstenção",orientada[0][6]])
-                        writer.writerow(["Votos do Presindente",orientada[0][5]])
+                        writer.writerow(["Não Compareceu",ncom])
+                        writer.writerow(["Votos do Presidente",orientada[0][5]])
                         writer.writerow(["PNRV",orientada[0][7]])
                         writer.writerow(["Total",orientada[0][8]])
 
@@ -288,18 +294,29 @@ def plenario(request):
 def comissao(request):
 
     lista=[]
+    comi = "https://legis.senado.leg.br/dadosabertos/dados/ComissoesPermanentes.xml"
+    joke = requests.get(comi)
+    xpars = xmltodict.parse(joke.text)
+    votos = xpars['ComissoesPermanentes']['Colegiados']['Colegiado']
+
+    comis = []
+
+    for i in votos:
+        comis.append(i['SiglaColegiado'])
+
     if request.method=="POST":
        
         data = request.POST
+        nomecomiss = data.get("comiss")
         ini = data.get("data1")
         fim = data.get("data2")
         
         ini = ini.replace("-","")
         fim = fim.replace("-","")
         cont=1    
-        print(ini,fim)
+        print(ini,fim,nomecomiss)
 
-        api_end_point = "https://legis.senado.leg.br/dadosabertos/votacaoComissao/comissao/CCJ?dataInicio="+ini+"&"+"dataFim="+fim
+        api_end_point = "https://legis.senado.leg.br/dadosabertos/votacaoComissao/comissao/"+nomecomiss+"?dataInicio="+ini+"&"+"dataFim="+fim
         joke = requests.get(api_end_point)
         xpars = xmltodict.parse(joke.text)
         votos = xpars['VotacoesComissao']
@@ -413,4 +430,4 @@ def comissao(request):
                 z.close()
         return  download_zip(lista,"Comissão")
     
-    return render(request,'comissao.html')
+    return render(request,'comissao.html',{'comissao': comis})
