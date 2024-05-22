@@ -441,4 +441,4 @@ def comissao(request):
         if lista!=[]:
             return  download_zip(lista,"Comissão_"+nomecomiss+"_"+ano1[2]+"_"+ano1[1]+"_"+ano1[0])
     
-    return render(request,'comissao.html',{'comissao': comis},{'alerta': "verdadeiro"})
+    return render(request,'comissao.html',{'comissao': comis},{'alerta': "falso"})
