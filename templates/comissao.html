@@ -64,7 +64,7 @@
   
     <h3 class="text-secondary">Informe a Comissão</h3>
     
-     <select  class="form-select" aria-label="Default select example" name="comiss"  onmousedown="if(this.options.length>5){this.size=5;}"  onchange='this.size=0;' >
+     <select  class="form-select" aria-label="Default select example" name="comiss"  >
       {% for item in comissao %}
       <option  >{{ item }}</option>
       {% endfor %}

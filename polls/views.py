@@ -230,10 +230,10 @@ def plenario(request):
                             orientada.append([d,desc,mtr,sim,nao,presidente,abss,pnrv,total,res,secreta,"SEM ORIENTAÇÃO"])
 
                 print(cont)
-                z = open("Votação "+str(cont)+ ".csv",'w+',encoding='iso-8859-1')
+                z = open("Votação"+str(cont)+"_"+"PLEN"+"_"+ano[2]+"_"+ano[1]+"_"+ano[0]+ ".csv",'w+',encoding='iso-8859-1')
                 print(orientada)   
                 l.sort(key=lambda x:x[1])     
-                with open("Votação "+str(cont)+ ".csv",'w', newline='',encoding='iso-8859-1') as csvfile:
+                with open("Votação"+str(cont)+"_"+"PLEN"+"_"+ano[2]+"_"+ano[1]+"_"+ano[0]+ ".csv",'w', newline='',encoding='iso-8859-1') as csvfile:
                         writer = csv.writer(csvfile,delimiter =';')
 
                         # Write data for table 1
@@ -279,14 +279,15 @@ def plenario(request):
                         writer.writerow(['Parlamentar','Partido','UF','Voto'])
                         writer.writerows(l)
                 
-                lista.append(os.path.join(settings.MEDIA_ROOT,  "Votação "+str(cont)+ ".csv"))
+                lista.append(os.path.join(settings.MEDIA_ROOT,  "Votação"+str(cont)+"_"+"PLEN"+"_"+ano[2]+"_"+ano[1]+"_"+ano[0]+ ".csv"))
                 cont+=1
                 csvfile.close()
                 z.close()
             
                 
-              
-            return  download_zip(lista,"Plenario") 
+            
+
+            return  download_zip(lista,"Plenario_"+ano[2]+"_"+ano[1]+"_"+ano[0]) 
                 
     return render(request,'plenario.html')
 
@@ -310,6 +311,9 @@ def comissao(request):
         nomecomiss = data.get("comiss")
         ini = data.get("data1")
         fim = data.get("data2")
+
+        ano1 = ini.split("-")
+        ano2 = fim.split("-")
         
         ini = ini.replace("-","")
         fim = fim.replace("-","")
@@ -387,10 +391,12 @@ def comissao(request):
                 horas = DataHoraInicioReuniao.split('T')
                 header.append([horas[0],NumeroReuniaoColegiado,TipoReuniao,NomeColegiado,IdentificacaoMateria,DescricaoIdentificacaoMateria,DescricaoVotacao,votos['Votacao'][i]['TotalVotosSim'],votos['Votacao'][i]['TotalVotosNao'],votos['Votacao'][i]['TotalVotosAbstencao'],int(votos['Votacao'][i]['TotalVotosSim'])+int(votos['Votacao'][i]['TotalVotosNao'])+int(votos['Votacao'][i]['TotalVotosAbstencao'])])
     
-                z = open("Votação "+str(cont)+ ".csv",'w+',encoding='iso-8859-1')
+
+               
+                z = open("Votação"+str(cont)+"_"+nomecomiss+"_"+ano1[2]+"_"+ano1[1]+"_"+ano1[0]+ ".csv",'w+',encoding='iso-8859-1')
                 body.sort(key=lambda x:x[1])    
 
-                with open("Votação "+str(cont)+ ".csv",'w', newline='',encoding='iso-8859-1') as csvfile:
+                with open("Votação"+str(cont)+"_"+nomecomiss+"_"+ano1[2]+"_"+ano1[1]+"_"+ano1[0]+ ".csv",'w', newline='',encoding='iso-8859-1') as csvfile:
                         writer = csv.writer(csvfile,delimiter =';')
 
                         # Write data for table 1
@@ -424,10 +430,10 @@ def comissao(request):
                         # Write data for table 2
                         writer.writerow(['Parlamentar','Partido','Voto'])
                         writer.writerows(body)
-                lista.append(os.path.join(settings.MEDIA_ROOT,  "Votação "+str(cont)+ ".csv"))
+                lista.append(os.path.join(settings.MEDIA_ROOT,  "Votação"+str(cont)+"_"+nomecomiss+"_"+ano1[2]+"_"+ano1[1]+"_"+ano1[0]+ ".csv"))
                 cont+=1
                 csvfile.close()
                 z.close()
-        return  download_zip(lista,"Comissão")
+        return  download_zip(lista,"Comissão_"+nomecomiss+"_"+ano1[2]+"_"+ano1[1]+"_"+ano1[0])
     
     return render(request,'comissao.html',{'comissao': comis})
