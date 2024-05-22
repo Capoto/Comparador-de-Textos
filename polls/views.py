@@ -330,6 +330,7 @@ def comissao(request):
 
         if "Votacoes" not in votos:
             print("Não teve votação nesse intervalo")
+            return render(request,'comissao.html',{'alerta': "verdadeiro"})
 
         else:
             votos = xpars['VotacoesComissao']['Votacoes']
@@ -440,4 +441,4 @@ def comissao(request):
         if lista!=[]:
             return  download_zip(lista,"Comissão_"+nomecomiss+"_"+ano1[2]+"_"+ano1[1]+"_"+ano1[0])
     
-    return render(request,'comissao.html',{'comissao': comis})
+    return render(request,'comissao.html',{'comissao': comis},{'alerta': "verdadeiro"})
