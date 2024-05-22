@@ -330,7 +330,7 @@ def comissao(request):
 
         if "Votacoes" not in votos:
             print("Não teve votação nesse intervalo")
-            return render(request,'comissao.html',{'alerta': "verdadeiro"})
+            return render(request,'comissao.html',{'comissao': comis,'alerta': "verdadeiro"})
 
         else:
             votos = xpars['VotacoesComissao']['Votacoes']
@@ -344,101 +344,198 @@ def comissao(request):
             DescricaoVotacao = ""
             
             
-            for i in range(len(votos['Votacao'])):
+            if type(votos['Votacao'])==list:
+
+                for i in range(len(votos['Votacao'])):
                
+             
+                    sim = 0
+                    nao = 0
+                    presidente  = 0 
+                    abss = 0 
+                    pnrv=0
+                    total = 0
+                    header = []
+                    DataHoraInicioReuniao = votos['Votacao'][i]['DataHoraInicioReuniao']
+                    NumeroReuniaoColegiado = votos['Votacao'][i]['NumeroReuniaoColegiado']
+                    TipoReuniao = votos['Votacao'][i]['TipoReuniao']
+                    NomeColegiado =  votos['Votacao'][i]['NomeColegiado']
+                    IdentificacaoMateria =  votos['Votacao'][i]['IdentificacaoMateria']
+                    DescricaoIdentificacaoMateria = votos['Votacao'][i]['DescricaoIdentificacaoMateria']
+                    DescricaoVotacao = votos['Votacao'][i]['DescricaoVotacao']
+
+                    t = votos['Votacao'][i]['IdentificacaoMateria']
+                    t = t.split(" ")
+
+                    sigla = t[0]
+
+                    r = t[1].split('/')
                 
-                sim = 0
-                nao = 0
-                presidente  = 0 
-                abss = 0 
-                pnrv=0
-                total = 0
-                header = []
-                DataHoraInicioReuniao = votos['Votacao'][i]['DataHoraInicioReuniao']
-                NumeroReuniaoColegiado = votos['Votacao'][i]['NumeroReuniaoColegiado']
-                TipoReuniao = votos['Votacao'][i]['TipoReuniao']
-                NomeColegiado =  votos['Votacao'][i]['NomeColegiado']
-                IdentificacaoMateria =  votos['Votacao'][i]['IdentificacaoMateria']
-                DescricaoIdentificacaoMateria = votos['Votacao'][i]['DescricaoIdentificacaoMateria']
-                DescricaoVotacao = votos['Votacao'][i]['DescricaoVotacao']
-
-                t = votos['Votacao'][i]['IdentificacaoMateria']
-                t = t.split(" ")
-
-                sigla = t[0]
-
-                r = t[1].split('/')
-                
-                codigo = r[0]
-                ano = r[1]
+                    codigo = r[0]
+                    ano = r[1]
 
 
-                api_end_point2 = "https://legis.senado.leg.br/dadosabertos/materia/"+sigla+"/"+codigo+"/"+ano
-                joke = requests.get(api_end_point2)
-                xpars = xmltodict.parse(joke.text)
-                materia = xpars['DetalheMateria']
+                    api_end_point2 = "https://legis.senado.leg.br/dadosabertos/materia/"+sigla+"/"+codigo+"/"+ano
+                    joke = requests.get(api_end_point2)
+                    xpars = xmltodict.parse(joke.text)
+                    materia = xpars['DetalheMateria']
 
-                ementa = "Sem ementa"
+                    ementa = "Sem ementa"
 
-                if "Materia" in  materia:
+                    if "Materia" in  materia:
       
-                    ementa = materia['Materia']['DadosBasicosMateria']['EmentaMateria']
+                        ementa = materia['Materia']['DadosBasicosMateria']['EmentaMateria']
 
 
 
-                body = []
+                    body = []
                 
 
-                for j in votos['Votacao'][i]['Votos']['Voto']:
+                    for j in votos['Votacao'][i]['Votos']['Voto']:
                     
-                    body.append([j['NomeParlamentar'],j['SiglaPartidoParlamentar'],j['QualidadeVoto']])
-                horas = DataHoraInicioReuniao.split('T')
-                header.append([horas[0],NumeroReuniaoColegiado,TipoReuniao,NomeColegiado,IdentificacaoMateria,DescricaoIdentificacaoMateria,DescricaoVotacao,votos['Votacao'][i]['TotalVotosSim'],votos['Votacao'][i]['TotalVotosNao'],votos['Votacao'][i]['TotalVotosAbstencao'],int(votos['Votacao'][i]['TotalVotosSim'])+int(votos['Votacao'][i]['TotalVotosNao'])+int(votos['Votacao'][i]['TotalVotosAbstencao'])])
+                        body.append([j['NomeParlamentar'],j['SiglaPartidoParlamentar'],j['QualidadeVoto']])
+                    horas = DataHoraInicioReuniao.split('T')
+                    header.append([horas[0],NumeroReuniaoColegiado,TipoReuniao,NomeColegiado,IdentificacaoMateria,DescricaoIdentificacaoMateria,DescricaoVotacao,votos['Votacao'][i]['TotalVotosSim'],votos['Votacao'][i]['TotalVotosNao'],votos['Votacao'][i]['TotalVotosAbstencao'],int(votos['Votacao'][i]['TotalVotosSim'])+int(votos['Votacao'][i]['TotalVotosNao'])+int(votos['Votacao'][i]['TotalVotosAbstencao'])])
     
 
                
-                z = open("Votação"+str(cont)+"_"+nomecomiss+"_"+ano1[2]+"_"+ano1[1]+"_"+ano1[0]+ ".csv",'w+',encoding='iso-8859-1')
-                body.sort(key=lambda x:x[1])    
+                    z = open("Votação"+str(cont)+"_"+nomecomiss+"_"+ano1[2]+"_"+ano1[1]+"_"+ano1[0]+ ".csv",'w+',encoding='iso-8859-1')
+                    body.sort(key=lambda x:x[1])    
 
-                with open("Votação"+str(cont)+"_"+nomecomiss+"_"+ano1[2]+"_"+ano1[1]+"_"+ano1[0]+ ".csv",'w', newline='',encoding='iso-8859-1') as csvfile:
-                        writer = csv.writer(csvfile,delimiter =';')
+                    with open("Votação"+str(cont)+"_"+nomecomiss+"_"+ano1[2]+"_"+ano1[1]+"_"+ano1[0]+ ".csv",'w', newline='',encoding='iso-8859-1') as csvfile:
+                            writer = csv.writer(csvfile,delimiter =';')
 
-                        # Write data for table 1
-                        writer.writerow([header[0][3]])
-                        writer.writerow([header[0][0]])
+                            # Write data for table 1
+                            writer.writerow([header[0][3]])
+                            writer.writerow([header[0][0]])
 
-                        # Add an empty line between tables
-                        writer.writerow([])
+                            # Add an empty line between tables
+                            writer.writerow([])
 
 
                       
-                        writer.writerow([header[0][5]])
+                            writer.writerow([header[0][5]])
                       
-                        writer.writerow([ementa])
+                            writer.writerow([ementa])
                        
-                        writer.writerow([header[0][6]])
+                            writer.writerow([header[0][6]])
 
-                        # Add an empty line between tables
-                        writer.writerow([])
+                            # Add an empty line between tables
+                            writer.writerow([])
 
                         
-                        writer.writerow(['Votos'])
-                        writer.writerow(['Votos Sim',header[0][7]])
-                        writer.writerow(['Votos Não',header[0][8]])
-                        writer.writerow(['Abstenção',header[0][9]])
-                        writer.writerow(['Total',header[0][10]])
+                            writer.writerow(['Votos'])
+                            writer.writerow(['Votos Sim',header[0][7]])
+                            writer.writerow(['Votos Não',header[0][8]])
+                            writer.writerow(['Abstenção',header[0][9]])
+                            writer.writerow(['Total',header[0][10]])
 
-                        # Add an empty line between tables
-                        writer.writerow([])
+                            # Add an empty line between tables
+                            writer.writerow([])
 
-                        # Write data for table 2
-                        writer.writerow(['Parlamentar','Partido','Voto'])
-                        writer.writerows(body)
-                lista.append(os.path.join(settings.MEDIA_ROOT,  "Votação"+str(cont)+"_"+nomecomiss+"_"+ano1[2]+"_"+ano1[1]+"_"+ano1[0]+ ".csv"))
-                cont+=1
-                csvfile.close()
-                z.close()
+                            # Write data for table 2
+                            writer.writerow(['Parlamentar','Partido','Voto'])
+                            writer.writerows(body)
+                    lista.append(os.path.join(settings.MEDIA_ROOT,  "Votação"+str(cont)+"_"+nomecomiss+"_"+ano1[2]+"_"+ano1[1]+"_"+ano1[0]+ ".csv"))
+                    cont+=1
+                    csvfile.close()
+                    z.close()
+
+            else:
+                    sim = 0
+                    nao = 0
+                    presidente  = 0 
+                    abss = 0 
+                    pnrv=0
+                    total = 0
+                    header = []
+                    DataHoraInicioReuniao = votos['Votacao']['DataHoraInicioReuniao']
+                    NumeroReuniaoColegiado = votos['Votacao']['NumeroReuniaoColegiado']
+                    TipoReuniao = votos['Votacao']['TipoReuniao']
+                    NomeColegiado =  votos['Votacao']['NomeColegiado']
+                    IdentificacaoMateria =  votos['Votacao']['IdentificacaoMateria']
+                    DescricaoIdentificacaoMateria = votos['Votacao']['DescricaoIdentificacaoMateria']
+                    DescricaoVotacao = votos['Votacao']['DescricaoVotacao']
+
+                    t = votos['Votacao']['IdentificacaoMateria']
+                    t = t.split(" ")
+
+                    sigla = t[0]
+
+                    r = t[1].split('/')
+                
+                    codigo = r[0]
+                    ano = r[1]
+
+
+                    api_end_point2 = "https://legis.senado.leg.br/dadosabertos/materia/"+sigla+"/"+codigo+"/"+ano
+                    joke = requests.get(api_end_point2)
+                    xpars = xmltodict.parse(joke.text)
+                    materia = xpars['DetalheMateria']
+
+                    ementa = "Sem ementa"
+
+                    if "Materia" in  materia:
+      
+                        ementa = materia['Materia']['DadosBasicosMateria']['EmentaMateria']
+
+
+
+                    body = []
+                
+
+                    for j in votos['Votacao']['Votos']['Voto']:
+                    
+                        body.append([j['NomeParlamentar'],j['SiglaPartidoParlamentar'],j['QualidadeVoto']])
+                    horas = DataHoraInicioReuniao.split('T')
+                    header.append([horas[0],NumeroReuniaoColegiado,TipoReuniao,NomeColegiado,IdentificacaoMateria,DescricaoIdentificacaoMateria,DescricaoVotacao,votos['Votacao']['TotalVotosSim'],votos['Votacao']['TotalVotosNao'],votos['Votacao']['TotalVotosAbstencao'],int(votos['Votacao']['TotalVotosSim'])+int(votos['Votacao']['TotalVotosNao'])+int(votos['Votacao']['TotalVotosAbstencao'])])
+    
+
+               
+                    z = open("Votação"+str(cont)+"_"+nomecomiss+"_"+ano1[2]+"_"+ano1[1]+"_"+ano1[0]+ ".csv",'w+',encoding='iso-8859-1')
+                    body.sort(key=lambda x:x[1])    
+
+                    with open("Votação"+str(cont)+"_"+nomecomiss+"_"+ano1[2]+"_"+ano1[1]+"_"+ano1[0]+ ".csv",'w', newline='',encoding='iso-8859-1') as csvfile:
+                            writer = csv.writer(csvfile,delimiter =';')
+
+                            # Write data for table 1
+                            writer.writerow([header[0][3]])
+                            writer.writerow([header[0][0]])
+
+                            # Add an empty line between tables
+                            writer.writerow([])
+
+
+                      
+                            writer.writerow([header[0][5]])
+                      
+                            writer.writerow([ementa])
+                       
+                            writer.writerow([header[0][6]])
+
+                            # Add an empty line between tables
+                            writer.writerow([])
+
+                        
+                            writer.writerow(['Votos'])
+                            writer.writerow(['Votos Sim',header[0][7]])
+                            writer.writerow(['Votos Não',header[0][8]])
+                            writer.writerow(['Abstenção',header[0][9]])
+                            writer.writerow(['Total',header[0][10]])
+
+                            # Add an empty line between tables
+                            writer.writerow([])
+
+                            # Write data for table 2
+                            writer.writerow(['Parlamentar','Partido','Voto'])
+                            writer.writerows(body)
+                    lista.append(os.path.join(settings.MEDIA_ROOT,  "Votação"+str(cont)+"_"+nomecomiss+"_"+ano1[2]+"_"+ano1[1]+"_"+ano1[0]+ ".csv"))
+                    cont+=1
+                    csvfile.close()
+                    z.close()
+
+
         if lista!=[]:
             return  download_zip(lista,"Comissão_"+nomecomiss+"_"+ano1[2]+"_"+ano1[1]+"_"+ano1[0])
     
-    return render(request,'comissao.html',{'comissao': comis},{'alerta': "falso"})
+    return render(request,'comissao.html',{'comissao': comis,'alerta': "falso"})
