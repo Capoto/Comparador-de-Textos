@@ -12,6 +12,11 @@ import csv
 import zipfile
 import io
 from django.conf import settings
+from docx import Document
+from docx.shared import Inches
+
+
+
 
 
 
@@ -98,6 +103,8 @@ def plenario(request):
         joke = requests.get(api_end_point)
         xpars = xmltodict.parse(joke.text)
         votos = xpars['ListaVotacoes']
+
+        
 
         if 'Votacoes' not in votos:
             print("Não teve votação nesse dia")
@@ -231,7 +238,44 @@ def plenario(request):
                             orientada.append([d,desc,mtr,sim,nao,presidente,abss,pnrv,total,res,secreta,"SEM ORIENTAÇÃO"])
 
                 print(cont)
+                document = Document()
                 z = open("Votação"+str(cont)+"_"+"PLEN"+"_"+ano[2]+"_"+ano[1]+"_"+ano[0]+ ".csv",'w+',encoding='iso-8859-1')
+               
+
+                document.add_heading('DataSessao ' + str(orientada[0][0]) +"\n", 0)
+
+                document.add_heading(id, 0)
+
+                document.add_paragraph("\n"+orientada[0][2])
+
+                document.add_paragraph("\n"+orientada[0][1])
+
+                table = document.add_table(rows=1, cols=2)
+                hdr_cells = table.rows[0].cells
+                hdr_cells[0].text = 'Secreta'
+                hdr_cells[1].text = orientada[0][-2]
+
+               
+                document.add_paragraph("\n")
+
+                table = document.add_table(rows=1, cols=1)
+                hdr_cells = table.rows[0].cells
+                hdr_cells[0].text = 'Votos'
+
+                
+                table = document.add_table(rows=1, cols=2)
+                hdr_cells = table.rows[0].cells
+                hdr_cells[0].text = 'Votos Sim'
+                hdr_cells[1].text = str(orientada[0][3])
+
+                table = document.add_table(rows=1, cols=2)
+                hdr_cells = table.rows[0].cells
+                hdr_cells[0].text = 'Votos Não'
+                hdr_cells[1].text = str(orientada[0][4])
+                
+
+
+                document.save('Votação '+str(cont)+ 'Plenário '+ano[2]+"_"+ano[1]+"_"+ano[0]+'.docx')
                 print(orientada)   
                 l.sort(key=lambda x:x[1])     
                 with open("Votação"+str(cont)+"_"+"PLEN"+"_"+ano[2]+"_"+ano[1]+"_"+ano[0]+ ".csv",'w', newline='',encoding='iso-8859-1') as csvfile:
