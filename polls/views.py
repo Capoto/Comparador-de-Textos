@@ -14,7 +14,7 @@ import io
 from django.conf import settings
 from docx import Document
 from docx.shared import Inches
-
+from docx.shared import Pt,RGBColor
 
 
 
@@ -239,7 +239,14 @@ def plenario(request):
 
                 print(cont)
                 document = Document()
-                z = open("Votação"+str(cont)+"_"+"PLEN"+"_"+ano[2]+"_"+ano[1]+"_"+ano[0]+ ".csv",'w+',encoding='iso-8859-1')
+                font = document.styles['Normal'].font
+                font.name = 'Arial'
+                font.size = Pt(12)
+                styles = document.styles['Heading 1'].font
+                styles.name = 'Arial'
+                paragraph_format = document.styles['Normal'].paragraph_format
+                paragraph_format.line_spacing = 1.15
+                z = open("CSV/Votação"+str(cont)+"_"+"PLEN"+"_"+ano[2]+"_"+ano[1]+"_"+ano[0]+ ".csv",'w+',encoding='iso-8859-1')
                
 
                 document.add_heading('DataSessao ' + str(orientada[0][0]) +"\n", 0)
@@ -250,7 +257,10 @@ def plenario(request):
 
                 document.add_paragraph("\n"+orientada[0][1])
 
+                document.add_paragraph("\n")
+
                 table = document.add_table(rows=1, cols=2)
+                table.style = 'Table Grid'
                 hdr_cells = table.rows[0].cells
                 hdr_cells[0].text = 'Secreta'
                 hdr_cells[1].text = orientada[0][-2]
@@ -259,26 +269,100 @@ def plenario(request):
                 document.add_paragraph("\n")
 
                 table = document.add_table(rows=1, cols=1)
+                table.style = 'Table Grid'
                 hdr_cells = table.rows[0].cells
                 hdr_cells[0].text = 'Votos'
 
                 
                 table = document.add_table(rows=1, cols=2)
+                table.style = 'Table Grid'
                 hdr_cells = table.rows[0].cells
                 hdr_cells[0].text = 'Votos Sim'
                 hdr_cells[1].text = str(orientada[0][3])
 
                 table = document.add_table(rows=1, cols=2)
+                table.style = 'Table Grid'
                 hdr_cells = table.rows[0].cells
                 hdr_cells[0].text = 'Votos Não'
                 hdr_cells[1].text = str(orientada[0][4])
                 
+                table = document.add_table(rows=1, cols=2)
+                table.style = 'Table Grid'
+                hdr_cells = table.rows[0].cells
+                hdr_cells[0].text = 'Abstenção'
+                hdr_cells[1].text = str(orientada[0][6])
 
 
-                document.save('Votação '+str(cont)+ 'Plenário '+ano[2]+"_"+ano[1]+"_"+ano[0]+'.docx')
+                table = document.add_table(rows=1, cols=2)
+                table.style = 'Table Grid'
+                hdr_cells = table.rows[0].cells
+                hdr_cells[0].text = 'Votos do Presidente'
+                hdr_cells[1].text = str(orientada[0][5])
+
+
+                table = document.add_table(rows=1, cols=2)
+                table.style = 'Table Grid'
+                hdr_cells = table.rows[0].cells
+                hdr_cells[0].text = 'Não Compareceu'
+                hdr_cells[1].text = str(ncom)
+
+
+                table = document.add_table(rows=1, cols=2)
+                table.style = 'Table Grid'
+                hdr_cells = table.rows[0].cells
+                hdr_cells[0].text = 'PNRV'
+                hdr_cells[1].text = str(orientada[0][7])
+
+                table = document.add_table(rows=1, cols=2)
+                table.style = 'Table Grid'
+                hdr_cells = table.rows[0].cells
+                hdr_cells[0].text = 'Total'
+                hdr_cells[1].text = str(orientada[0][8])
+
+
+                document.add_paragraph("\n")
+
+                table = document.add_table(rows=1, cols=2)
+                table.style = 'Table Grid'
+                hdr_cells = table.rows[0].cells
+                hdr_cells[0].text = 'Resultado'
+                hdr_cells[1].text = orientada[0][-3]
+
+
+                table = document.add_table(rows=1, cols=2)
+                table.style = 'Table Grid'
+                hdr_cells = table.rows[0].cells
+                hdr_cells[0].text = 'Orientação do Governo'
+                hdr_cells[1].text = orientada[0][-1]
+
+
+                document.add_paragraph("\n")
+
+                table = document.add_table(rows=1, cols=4)
+                table.style = 'Table Grid'
+                hdr_cells = table.rows[0].cells
+                hdr_cells[0].text = 'Parlamentar'
+                hdr_cells[1].text = 'Partido'
+                hdr_cells[2].text = 'UF'
+                hdr_cells[3].text = 'Voto'
+
+                
+                for iii in l:
+                    table = document.add_table(rows=1, cols=4)
+                    table.style = 'Table Grid'
+                    hdr_cells = table.rows[0].cells
+                    hdr_cells[0].text = iii[0]
+                    hdr_cells[1].text =  iii[1]
+                    hdr_cells[2].text = iii[2]
+                    hdr_cells[3].text =  iii[3]
+                
+
+
+
+                document.save('word/Votação '+str(cont)+ 'Plenário '+ano[2]+"_"+ano[1]+"_"+ano[0]+'.docx')
                 print(orientada)   
                 l.sort(key=lambda x:x[1])     
-                with open("Votação"+str(cont)+"_"+"PLEN"+"_"+ano[2]+"_"+ano[1]+"_"+ano[0]+ ".csv",'w', newline='',encoding='iso-8859-1') as csvfile:
+                with open("CSV/Votação"+str(cont)+"_"+"PLEN"+"_"+ano[2]+"_"+ano[1]+"_"+ano[0]+ ".csv",'w', newline='',encoding='iso-8859-1') as csvfile:
                         writer = csv.writer(csvfile,delimiter =';')
 
                         # Write data for table 1
@@ -324,7 +408,8 @@ def plenario(request):
                         writer.writerow(['Parlamentar','Partido','UF','Voto'])
                         writer.writerows(l)
                 
-                lista.append(os.path.join(settings.MEDIA_ROOT,  "Votação"+str(cont)+"_"+"PLEN"+"_"+ano[2]+"_"+ano[1]+"_"+ano[0]+ ".csv"))
+                lista.append(os.path.join(settings.MEDIA_ROOT,  "CSV/Votação"+str(cont)+"_"+"PLEN"+"_"+ano[2]+"_"+ano[1]+"_"+ano[0]+ ".csv"))
+                lista.append(os.path.join(settings.MEDIA_ROOT,  'word/Votação '+str(cont)+ 'Plenário '+ano[2]+"_"+ano[1]+"_"+ano[0]+'.docx'))
                 cont+=1
                 csvfile.close()
                 z.close()
