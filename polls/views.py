@@ -115,107 +115,111 @@ def plenario(request):
 
             votos = xpars['ListaVotacoes']['Votacoes']
             cont =1
+            
 
-            for i in votos['Votacao']:
-                api_end_point2 = "https://legis.senado.leg.br/dadosabertos/materia/"+str(i['CodigoMateria'])
-                joke = requests.get(api_end_point2)
-                xpars = xmltodict.parse(joke.text)
-                materia =  xpars['DetalheMateria']
-                sim = 0
-                nao = 0
-                presidente  = 0 
-                abss = 0 
-                pnrv=0
-                ncom =0
-                desc = ""
-                mtr= "Sem Ementa"
-                res = ""
-                secreta=""
-                d= ""
-                l = [] 
-                orientada = []
-                id = ""
+            if type(votos['Votacao'])==list:
+            
+                for i in votos['Votacao']:
+               
+                    api_end_point2 = "https://legis.senado.leg.br/dadosabertos/materia/"+str(i['CodigoMateria'])
+                    joke = requests.get(api_end_point2)
+                    xpars = xmltodict.parse(joke.text)
+                    materia =  xpars['DetalheMateria']
+                    sim = 0
+                    nao = 0
+                    presidente  = 0 
+                    abss = 0 
+                    pnrv=0
+                    ncom =0
+                    desc = ""
+                    mtr= "Sem Ementa"
+                    res = ""
+                    secreta=""
+                    d= ""
+                    l = [] 
+                    orientada = []
+                    id = ""
                 
 
-                if 'Materia' in materia:
-                    materia =  xpars['DetalheMateria']['Materia']['DadosBasicosMateria']['EmentaMateria']
-                    mtr = materia
-                    desc= i['DescricaoVotacao']
-                    d = i['DataSessao']
+                    if 'Materia' in materia:
+                        materia =  xpars['DetalheMateria']['Materia']['DadosBasicosMateria']['EmentaMateria']
+                        mtr = materia
+                        desc= i['DescricaoVotacao']
+                        d = i['DataSessao']
 
-                    id = i['DescricaoIdentificacaoMateria']
-                    if i['Resultado']=="A":
+                        id = i['DescricaoIdentificacaoMateria']
+                        if i['Resultado']=="A":
                             res ="Aprovada"
-                    else:
-                        res = "Reprovada"
+                        else:
+                            res = "Reprovada"
 
-                    if i['Secreta']=="S":
-                        secreta ="Sim"
-                    else:
-                        secreta = "Não"
+                        if i['Secreta']=="S":
+                            secreta ="Sim"
+                        else:
+                            secreta = "Não"
 
-                    for j in i['Votos']['VotoParlamentar']:
+                        for j in i['Votos']['VotoParlamentar']:
                         
-                        if j['Voto']=='Sim':
-                            sim+=1
-                        elif j['Voto']=='Não':
-                            nao+=1
-                        elif j['Voto']=='P-NRV':
-                            pnrv+=1
-                        elif j['Voto']=='Presidente (art. 51 RISF)':
-                            presidente+=1
-                        elif  j['Voto']=='Abstenção':
-                            abss+=1
-                        elif j['Voto']=='NCom':
-                            ncom+=1
+                            if j['Voto']=='Sim':
+                                sim+=1
+                            elif j['Voto']=='Não':
+                                nao+=1
+                            elif j['Voto']=='P-NRV':
+                                pnrv+=1
+                            elif j['Voto']=='Presidente (art. 51 RISF)':
+                                presidente+=1
+                            elif  j['Voto']=='Abstenção':
+                                abss+=1
+                            elif j['Voto']=='NCom':
+                                ncom+=1
                         
 
                         
-                        l.append([j['NomeParlamentar'],j['SiglaPartido'],j['SiglaUF'],j['Voto']])
+                            l.append([j['NomeParlamentar'],j['SiglaPartido'],j['SiglaUF'],j['Voto']])
 
 
                      
                    
 
-                else:
+                    else:
 
-                    desc= i['DescricaoVotacao']
-                    d = i['DataSessao']
-                    id = i['DescricaoIdentificacaoMateria']
-                    if i['Resultado']=="A":
+                        desc= i['DescricaoVotacao']
+                        d = i['DataSessao']
+                        id = i['DescricaoIdentificacaoMateria']
+                        if i['Resultado']=="A":
                             res ="Aprovada"
-                    else:
-                        res = "Reprovada"
+                        else:
+                            res = "Reprovada"
 
-                    if i['Secreta']=="S":
-                        secreta ="Sim"
-                    else:
-                        secreta = "Não"
+                        if i['Secreta']=="S":
+                            secreta ="Sim"
+                        else:
+                            secreta = "Não"
                     
-                    for j in i['Votos']['VotoParlamentar']:
+                        for j in i['Votos']['VotoParlamentar']:
                         
-                        if j['Voto']=='Sim':
-                            sim+=1
-                        elif j['Voto']=='Não':
-                            nao+=1
-                        elif j['Voto']=='P-NRV':
-                            pnrv+=1
-                        elif j['Voto']=='Presidente (art. 51 RISF)':
-                            presidente+=1
-                        elif  j['Voto']=='Abstenção':
-                            abss+=1
-                        elif j['Voto']=='NCom':
-                            ncom+=1
+                            if j['Voto']=='Sim':
+                                sim+=1
+                            elif j['Voto']=='Não':
+                                nao+=1
+                            elif j['Voto']=='P-NRV':
+                                pnrv+=1
+                            elif j['Voto']=='Presidente (art. 51 RISF)':
+                                presidente+=1
+                            elif  j['Voto']=='Abstenção':
+                                abss+=1
+                            elif j['Voto']=='NCom':
+                                ncom+=1
                 
                        
-                        l.append([j['NomeParlamentar'],j['SiglaPartido'],j['SiglaUF'],j['Voto']])
+                            l.append([j['NomeParlamentar'],j['SiglaPartido'],j['SiglaUF'],j['Voto']])
 
-                api_end_point3 = "https://legis.senado.leg.br/dadosabertos/plenario/votacao/orientacaoBancada/"+action
-                joke = requests.get(api_end_point3)
-                xpars = xmltodict.parse(joke.text)
-                ori =  xpars['OrientacaoBancada']
+                    api_end_point3 = "https://legis.senado.leg.br/dadosabertos/plenario/votacao/orientacaoBancada/"+action
+                    joke = requests.get(api_end_point3)
+                    xpars = xmltodict.parse(joke.text)
+                    ori =  xpars['OrientacaoBancada']
                 
-                if 'votacoes' in ori:
+                    if 'votacoes' in ori:
                         ori = xpars['OrientacaoBancada']['votacoes']
                         flag = 0
                         for i  in  ori:
@@ -237,132 +241,132 @@ def plenario(request):
                             total = sim+nao+presidente+abss+pnrv+ncom
                             orientada.append([d,desc,mtr,sim,nao,presidente,abss,pnrv,total,res,secreta,"SEM ORIENTAÇÃO"])
 
-                print(cont)
-                document = Document()
-                font = document.styles['Normal'].font
-                font.name = 'Arial'
-                font.size = Pt(12)
-                styles = document.styles['Heading 1'].font
-                styles.name = 'Arial'
-                paragraph_format = document.styles['Normal'].paragraph_format
-                paragraph_format.line_spacing = 1.15
-                z = open("CSV/Votação"+str(cont)+"_"+"PLEN"+"_"+ano[2]+"_"+ano[1]+"_"+ano[0]+ ".csv",'w+',encoding='iso-8859-1')
+                    print(cont)
+                    document = Document()
+                    font = document.styles['Normal'].font
+                    font.name = 'Arial'
+                    font.size = Pt(12)
+                    styles = document.styles['Heading 1'].font
+                    styles.name = 'Arial'
+                    paragraph_format = document.styles['Normal'].paragraph_format
+                    paragraph_format.line_spacing = 1.15
+                    z = open("CSV/Votação"+str(cont)+"_"+"PLEN"+"_"+ano[2]+"_"+ano[1]+"_"+ano[0]+ ".csv",'w+',encoding='iso-8859-1')
                
 
-                document.add_heading('DataSessao ' + str(orientada[0][0]) +"\n", 0)
+                    document.add_heading('DataSessao ' + str(orientada[0][0]) +"\n", 0)
 
-                document.add_heading(id, 0)
+                    document.add_heading(id, 0)
 
-                document.add_paragraph("\n"+orientada[0][2])
+                    document.add_paragraph("\n"+orientada[0][2])
 
-                document.add_paragraph("\n"+orientada[0][1])
+                    document.add_paragraph("\n"+orientada[0][1])
 
-                document.add_paragraph("\n")
+                    document.add_paragraph("\n")
 
-                table = document.add_table(rows=1, cols=2)
-                table.style = 'Table Grid'
-                hdr_cells = table.rows[0].cells
-                hdr_cells[0].text = 'Secreta'
-                hdr_cells[1].text = orientada[0][-2]
+                    table = document.add_table(rows=1, cols=2)
+                    table.style = 'Table Grid'
+                    hdr_cells = table.rows[0].cells
+                    hdr_cells[0].text = 'Secreta'
+                    hdr_cells[1].text = orientada[0][-2]
 
                
-                document.add_paragraph("\n")
+                    document.add_paragraph("\n")
 
-                table = document.add_table(rows=1, cols=1)
-                table.style = 'Table Grid'
-                hdr_cells = table.rows[0].cells
-                hdr_cells[0].text = 'Votos'
-
-                
-                table = document.add_table(rows=1, cols=2)
-                table.style = 'Table Grid'
-                hdr_cells = table.rows[0].cells
-                hdr_cells[0].text = 'Votos Sim'
-                hdr_cells[1].text = str(orientada[0][3])
-
-                table = document.add_table(rows=1, cols=2)
-                table.style = 'Table Grid'
-                hdr_cells = table.rows[0].cells
-                hdr_cells[0].text = 'Votos Não'
-                hdr_cells[1].text = str(orientada[0][4])
-                
-                table = document.add_table(rows=1, cols=2)
-                table.style = 'Table Grid'
-                hdr_cells = table.rows[0].cells
-                hdr_cells[0].text = 'Abstenção'
-                hdr_cells[1].text = str(orientada[0][6])
-
-
-                table = document.add_table(rows=1, cols=2)
-                table.style = 'Table Grid'
-                hdr_cells = table.rows[0].cells
-                hdr_cells[0].text = 'Votos do Presidente'
-                hdr_cells[1].text = str(orientada[0][5])
-
-
-                table = document.add_table(rows=1, cols=2)
-                table.style = 'Table Grid'
-                hdr_cells = table.rows[0].cells
-                hdr_cells[0].text = 'Não Compareceu'
-                hdr_cells[1].text = str(ncom)
-
-
-                table = document.add_table(rows=1, cols=2)
-                table.style = 'Table Grid'
-                hdr_cells = table.rows[0].cells
-                hdr_cells[0].text = 'PNRV'
-                hdr_cells[1].text = str(orientada[0][7])
-
-                table = document.add_table(rows=1, cols=2)
-                table.style = 'Table Grid'
-                hdr_cells = table.rows[0].cells
-                hdr_cells[0].text = 'Total'
-                hdr_cells[1].text = str(orientada[0][8])
-
-
-                document.add_paragraph("\n")
-
-                table = document.add_table(rows=1, cols=2)
-                table.style = 'Table Grid'
-                hdr_cells = table.rows[0].cells
-                hdr_cells[0].text = 'Resultado'
-                hdr_cells[1].text = orientada[0][-3]
-
-
-                table = document.add_table(rows=1, cols=2)
-                table.style = 'Table Grid'
-                hdr_cells = table.rows[0].cells
-                hdr_cells[0].text = 'Orientação do Governo'
-                hdr_cells[1].text = orientada[0][-1]
-
-
-                document.add_paragraph("\n")
-
-                table = document.add_table(rows=1, cols=4)
-                table.style = 'Table Grid'
-                hdr_cells = table.rows[0].cells
-                hdr_cells[0].text = 'Parlamentar'
-                hdr_cells[1].text = 'Partido'
-                hdr_cells[2].text = 'UF'
-                hdr_cells[3].text = 'Voto'
+                    table = document.add_table(rows=1, cols=1)
+                    table.style = 'Table Grid'
+                    hdr_cells = table.rows[0].cells
+                    hdr_cells[0].text = 'Votos'
 
                 
-                for iii in l:
+                    table = document.add_table(rows=1, cols=2)
+                    table.style = 'Table Grid'
+                    hdr_cells = table.rows[0].cells
+                    hdr_cells[0].text = 'Votos Sim'
+                    hdr_cells[1].text = str(orientada[0][3])
+
+                    table = document.add_table(rows=1, cols=2)
+                    table.style = 'Table Grid'
+                    hdr_cells = table.rows[0].cells
+                    hdr_cells[0].text = 'Votos Não'
+                    hdr_cells[1].text = str(orientada[0][4])
+                
+                    table = document.add_table(rows=1, cols=2)
+                    table.style = 'Table Grid'
+                    hdr_cells = table.rows[0].cells
+                    hdr_cells[0].text = 'Abstenção'
+                    hdr_cells[1].text = str(orientada[0][6])
+
+
+                    table = document.add_table(rows=1, cols=2)
+                    table.style = 'Table Grid'
+                    hdr_cells = table.rows[0].cells
+                    hdr_cells[0].text = 'Votos do Presidente'
+                    hdr_cells[1].text = str(orientada[0][5])
+
+
+                    table = document.add_table(rows=1, cols=2)
+                    table.style = 'Table Grid'
+                    hdr_cells = table.rows[0].cells
+                    hdr_cells[0].text = 'Não Compareceu'
+                    hdr_cells[1].text = str(ncom)
+
+
+                    table = document.add_table(rows=1, cols=2)
+                    table.style = 'Table Grid'
+                    hdr_cells = table.rows[0].cells
+                    hdr_cells[0].text = 'PNRV'
+                    hdr_cells[1].text = str(orientada[0][7])
+
+                    table = document.add_table(rows=1, cols=2)
+                    table.style = 'Table Grid'
+                    hdr_cells = table.rows[0].cells
+                    hdr_cells[0].text = 'Total'
+                    hdr_cells[1].text = str(orientada[0][8])
+
+
+                    document.add_paragraph("\n")
+
+                    table = document.add_table(rows=1, cols=2)
+                    table.style = 'Table Grid'
+                    hdr_cells = table.rows[0].cells
+                    hdr_cells[0].text = 'Resultado'
+                    hdr_cells[1].text = orientada[0][-3]
+
+
+                    table = document.add_table(rows=1, cols=2)
+                    table.style = 'Table Grid'
+                    hdr_cells = table.rows[0].cells
+                    hdr_cells[0].text = 'Orientação do Governo'
+                    hdr_cells[1].text = orientada[0][-1]
+
+
+                    document.add_paragraph("\n")
+
                     table = document.add_table(rows=1, cols=4)
                     table.style = 'Table Grid'
                     hdr_cells = table.rows[0].cells
-                    hdr_cells[0].text = iii[0]
-                    hdr_cells[1].text =  iii[1]
-                    hdr_cells[2].text = iii[2]
-                    hdr_cells[3].text =  iii[3]
+                    hdr_cells[0].text = 'Parlamentar'
+                    hdr_cells[1].text = 'Partido'
+                    hdr_cells[2].text = 'UF'
+                    hdr_cells[3].text = 'Voto'
+
+                
+                    for iii in l:
+                        table = document.add_table(rows=1, cols=4)
+                        table.style = 'Table Grid'
+                        hdr_cells = table.rows[0].cells
+                        hdr_cells[0].text = iii[0]
+                        hdr_cells[1].text =  iii[1]
+                        hdr_cells[2].text = iii[2]
+                        hdr_cells[3].text =  iii[3]
                 
 
 
 
-                document.save('word/Votação '+str(cont)+ 'Plenário '+ano[2]+"_"+ano[1]+"_"+ano[0]+'.docx')
-                print(orientada)   
-                l.sort(key=lambda x:x[1])     
-                with open("CSV/Votação"+str(cont)+"_"+"PLEN"+"_"+ano[2]+"_"+ano[1]+"_"+ano[0]+ ".csv",'w', newline='',encoding='iso-8859-1') as csvfile:
+                    document.save('word/Votação '+str(cont)+ 'Plenário '+ano[2]+"_"+ano[1]+"_"+ano[0]+'.docx')
+                    print(orientada)   
+                    l.sort(key=lambda x:x[1])     
+                    with open("CSV/Votação"+str(cont)+"_"+"PLEN"+"_"+ano[2]+"_"+ano[1]+"_"+ano[0]+ ".csv",'w', newline='',encoding='iso-8859-1') as csvfile:
                         writer = csv.writer(csvfile,delimiter =';')
 
                         # Write data for table 1
@@ -408,16 +412,321 @@ def plenario(request):
                         writer.writerow(['Parlamentar','Partido','UF','Voto'])
                         writer.writerows(l)
                 
-                lista.append(os.path.join(settings.MEDIA_ROOT,  "CSV/Votação"+str(cont)+"_"+"PLEN"+"_"+ano[2]+"_"+ano[1]+"_"+ano[0]+ ".csv"))
-                lista.append(os.path.join(settings.MEDIA_ROOT,  'word/Votação '+str(cont)+ 'Plenário '+ano[2]+"_"+ano[1]+"_"+ano[0]+'.docx'))
-                cont+=1
-                csvfile.close()
-                z.close()
+                    lista.append(os.path.join(settings.MEDIA_ROOT,  "CSV/Votação"+str(cont)+"_"+"PLEN"+"_"+ano[2]+"_"+ano[1]+"_"+ano[0]+ ".csv"))
+                    lista.append(os.path.join(settings.MEDIA_ROOT,  'word/Votação '+str(cont)+ 'Plenário '+ano[2]+"_"+ano[1]+"_"+ano[0]+'.docx'))
+                    cont+=1
+                    csvfile.close()
+                    z.close()
             
                 
-            if lista!=[]:    
+                                
 
-                return  download_zip(lista,"Plenario_"+ano[2]+"_"+ano[1]+"_"+ano[0]) 
+            else:
+                    api_end_point2 = "https://legis.senado.leg.br/dadosabertos/materia/"+str(votos['Votacao']['CodigoMateria'])
+                    joke = requests.get(api_end_point2)
+                    xpars = xmltodict.parse(joke.text)
+                    materia =  xpars['DetalheMateria']
+                    sim = 0
+                    nao = 0
+                    presidente  = 0 
+                    abss = 0 
+                    pnrv=0
+                    ncom =0
+                    desc = ""
+                    mtr= "Sem Ementa"
+                    res = ""
+                    secreta=""
+                    d= ""
+                    l = [] 
+                    orientada = []
+                    id = ""
+                
+
+                    if 'Materia' in materia:
+                        materia =  xpars['DetalheMateria']['Materia']['DadosBasicosMateria']['EmentaMateria']
+                        mtr = materia
+                        desc= votos['Votacao']['DescricaoVotacao']
+                        d = votos['Votacao']['DataSessao']
+
+                        id = votos['Votacao']['DescricaoIdentificacaoMateria']
+                        if votos['Votacao']['Resultado']=="A":
+                            res ="Aprovada"
+                        else:
+                            res = "Reprovada"
+
+                        if votos['Votacao']['Secreta']=="S":
+                            secreta ="Sim"
+                        else:
+                            secreta = "Não"
+
+                        for j in votos['Votacao']['Votos']['VotoParlamentar']:
+                        
+                            if j['Voto']=='Sim':
+                                sim+=1
+                            elif j['Voto']=='Não':
+                                nao+=1
+                            elif j['Voto']=='P-NRV':
+                                pnrv+=1
+                            elif j['Voto']=='Presidente (art. 51 RISF)':
+                                presidente+=1
+                            elif  j['Voto']=='Abstenção':
+                                abss+=1
+                            elif j['Voto']=='NCom':
+                                ncom+=1
+                        
+
+                        
+                            l.append([j['NomeParlamentar'],j['SiglaPartido'],j['SiglaUF'],j['Voto']])
+
+
+                     
+                   
+
+                    else:
+
+                        desc= votos['Votacao']['DescricaoVotacao']
+                        d = votos['Votacao']['DataSessao']
+                        id = votos['Votacao']['DescricaoIdentificacaoMateria']
+                        if votos['Votacao']['Resultado']=="A":
+                            res ="Aprovada"
+                        else:
+                            res = "Reprovada"
+
+                        if votos['Votacao']['Secreta']=="S":
+                            secreta ="Sim"
+                        else:
+                            secreta = "Não"
+                    
+                        for j in votos['Votacao']['Votos']['VotoParlamentar']:
+                        
+                            if j['Voto']=='Sim':
+                                sim+=1
+                            elif j['Voto']=='Não':
+                                nao+=1
+                            elif j['Voto']=='P-NRV':
+                                pnrv+=1
+                            elif j['Voto']=='Presidente (art. 51 RISF)':
+                                presidente+=1
+                            elif  j['Voto']=='Abstenção':
+                                abss+=1
+                            elif j['Voto']=='NCom':
+                                ncom+=1
+                
+                       
+                            l.append([j['NomeParlamentar'],j['SiglaPartido'],j['SiglaUF'],j['Voto']])
+
+                    api_end_point3 = "https://legis.senado.leg.br/dadosabertos/plenario/votacao/orientacaoBancada/"+action
+                    joke = requests.get(api_end_point3)
+                    xpars = xmltodict.parse(joke.text)
+                    ori =  xpars['OrientacaoBancada']
+                
+                    if 'votacoes' in ori:
+                        ori = xpars['OrientacaoBancada']['votacoes']
+                        flag = 0
+                        
+                            
+                        if 'orientacoesLideranca' in ori:
+                                
+                            
+                            for j in ori['orientacoesLideranca']:
+                                    z = j['partido']
+                                    if z=="Governo":
+                                        print("teste")
+                                        flag =1
+                                        total = sim+nao+presidente+abss+pnrv+ncom
+                                        orientada.append([d,desc,mtr,sim,nao,presidente,abss,pnrv,total,res,secreta, j['voto']])
+                                        break
+                                    if flag==1:
+                                        break
+                        if flag==0:
+                            total = sim+nao+presidente+abss+pnrv+ncom
+                            orientada.append([d,desc,mtr,sim,nao,presidente,abss,pnrv,total,res,secreta,"SEM ORIENTAÇÃO"])
+
+
+                    print(cont)
+                    document = Document()
+                    font = document.styles['Normal'].font
+                    font.name = 'Arial'
+                    font.size = Pt(12)
+                    styles = document.styles['Heading 1'].font
+                    styles.name = 'Arial'
+                    paragraph_format = document.styles['Normal'].paragraph_format
+                    paragraph_format.line_spacing = 1.15
+                    z = open("CSV/Votação"+str(cont)+"_"+"PLEN"+"_"+ano[2]+"_"+ano[1]+"_"+ano[0]+ ".csv",'w+',encoding='iso-8859-1')
+               
+
+                    document.add_heading('DataSessao ' + str(orientada[0][0]) +"\n", 0)
+
+                    document.add_heading(id, 0)
+
+                    document.add_paragraph("\n"+orientada[0][2])
+
+                    document.add_paragraph("\n"+orientada[0][1])
+
+                    document.add_paragraph("\n")
+
+                    table = document.add_table(rows=1, cols=2)
+                    table.style = 'Table Grid'
+                    hdr_cells = table.rows[0].cells
+                    hdr_cells[0].text = 'Secreta'
+                    hdr_cells[1].text = orientada[0][-2]
+
+               
+                    document.add_paragraph("\n")
+
+                    table = document.add_table(rows=1, cols=1)
+                    table.style = 'Table Grid'
+                    hdr_cells = table.rows[0].cells
+                    hdr_cells[0].text = 'Votos'
+
+                
+                    table = document.add_table(rows=1, cols=2)
+                    table.style = 'Table Grid'
+                    hdr_cells = table.rows[0].cells
+                    hdr_cells[0].text = 'Votos Sim'
+                    hdr_cells[1].text = str(orientada[0][3])
+
+                    table = document.add_table(rows=1, cols=2)
+                    table.style = 'Table Grid'
+                    hdr_cells = table.rows[0].cells
+                    hdr_cells[0].text = 'Votos Não'
+                    hdr_cells[1].text = str(orientada[0][4])
+                
+                    table = document.add_table(rows=1, cols=2)
+                    table.style = 'Table Grid'
+                    hdr_cells = table.rows[0].cells
+                    hdr_cells[0].text = 'Abstenção'
+                    hdr_cells[1].text = str(orientada[0][6])
+
+
+                    table = document.add_table(rows=1, cols=2)
+                    table.style = 'Table Grid'
+                    hdr_cells = table.rows[0].cells
+                    hdr_cells[0].text = 'Votos do Presidente'
+                    hdr_cells[1].text = str(orientada[0][5])
+
+
+                    table = document.add_table(rows=1, cols=2)
+                    table.style = 'Table Grid'
+                    hdr_cells = table.rows[0].cells
+                    hdr_cells[0].text = 'Não Compareceu'
+                    hdr_cells[1].text = str(ncom)
+
+
+                    table = document.add_table(rows=1, cols=2)
+                    table.style = 'Table Grid'
+                    hdr_cells = table.rows[0].cells
+                    hdr_cells[0].text = 'PNRV'
+                    hdr_cells[1].text = str(orientada[0][7])
+
+                    table = document.add_table(rows=1, cols=2)
+                    table.style = 'Table Grid'
+                    hdr_cells = table.rows[0].cells
+                    hdr_cells[0].text = 'Total'
+                    hdr_cells[1].text = str(orientada[0][8])
+
+
+                    document.add_paragraph("\n")
+
+                    table = document.add_table(rows=1, cols=2)
+                    table.style = 'Table Grid'
+                    hdr_cells = table.rows[0].cells
+                    hdr_cells[0].text = 'Resultado'
+                    hdr_cells[1].text = orientada[0][-3]
+
+
+                    table = document.add_table(rows=1, cols=2)
+                    table.style = 'Table Grid'
+                    hdr_cells = table.rows[0].cells
+                    hdr_cells[0].text = 'Orientação do Governo'
+                    hdr_cells[1].text = orientada[0][-1]
+
+
+                    document.add_paragraph("\n")
+
+                    table = document.add_table(rows=1, cols=4)
+                    table.style = 'Table Grid'
+                    hdr_cells = table.rows[0].cells
+                    hdr_cells[0].text = 'Parlamentar'
+                    hdr_cells[1].text = 'Partido'
+                    hdr_cells[2].text = 'UF'
+                    hdr_cells[3].text = 'Voto'
+
+                
+                    for iii in l:
+                        table = document.add_table(rows=1, cols=4)
+                        table.style = 'Table Grid'
+                        hdr_cells = table.rows[0].cells
+                        hdr_cells[0].text = iii[0]
+                        hdr_cells[1].text =  iii[1]
+                        hdr_cells[2].text = iii[2]
+                        hdr_cells[3].text =  iii[3]
+                
+
+
+
+                    document.save('word/Votação '+str(cont)+ 'Plenário '+ano[2]+"_"+ano[1]+"_"+ano[0]+'.docx')
+                    print(orientada)   
+                    l.sort(key=lambda x:x[1])     
+                    with open("CSV/Votação"+str(cont)+"_"+"PLEN"+"_"+ano[2]+"_"+ano[1]+"_"+ano[0]+ ".csv",'w', newline='',encoding='iso-8859-1') as csvfile:
+                        writer = csv.writer(csvfile,delimiter =';')
+
+                        # Write data for table 1
+                        writer.writerow(["DataSessao",orientada[0][0]])
+                      
+
+                        # Add an empty line between tables
+                        writer.writerow([])
+                        
+                        writer.writerow([id])
+                        # Write data for table 1
+                        writer.writerow([orientada[0][2]])
+                        writer.writerow([orientada[0][1]])
+
+                        # Add an empty line between tables
+                        writer.writerow([])
+
+                        # Add an empty line between tables
+                        writer.writerow(["Secreta",orientada[0][-2]])
+
+                    
+                        # Add an empty line between tables
+                        writer.writerow([])
+                        writer.writerow(["Votos"])
+                        writer.writerow(["Votos Sim",orientada[0][3]])
+                        writer.writerow(["Votos Não",orientada[0][4]])
+                        writer.writerow(["Abstenção",orientada[0][6]])
+                        writer.writerow(["Não Compareceu",ncom])
+                        writer.writerow(["Votos do Presidente",orientada[0][5]])
+                        writer.writerow(["PNRV",orientada[0][7]])
+                        writer.writerow(["Total",orientada[0][8]])
+
+                        # Add an empty line between tables
+                        writer.writerow([])
+                        
+                        writer.writerow(["Resultado",orientada[0][-3]])
+                        writer.writerow(["Orientação do Governo",orientada[0][-1]])
+
+                        # Add an empty line between tables
+                        writer.writerow([])
+
+                        # Write data for table 2
+                        writer.writerow(['Parlamentar','Partido','UF','Voto'])
+                        writer.writerows(l)
+                
+                    lista.append(os.path.join(settings.MEDIA_ROOT,  "CSV/Votação"+str(cont)+"_"+"PLEN"+"_"+ano[2]+"_"+ano[1]+"_"+ano[0]+ ".csv"))
+                    lista.append(os.path.join(settings.MEDIA_ROOT,  'word/Votação '+str(cont)+ 'Plenário '+ano[2]+"_"+ano[1]+"_"+ano[0]+'.docx'))
+                    cont+=1
+                    csvfile.close()
+                    z.close()
+            
+                
+        if lista!=[]:    
+
+            return  download_zip(lista,"Plenario_"+ano[2]+"_"+ano[1]+"_"+ano[0])             
+
+
+            
             
             
                 
