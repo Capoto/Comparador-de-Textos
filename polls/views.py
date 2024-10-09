@@ -15,8 +15,42 @@ from django.conf import settings
 from docx import Document
 from docx.shared import Inches
 from docx.shared import Pt,RGBColor
+import wordcloud
+from wordcloud import WordCloud
+import nltk
+import re
+import string
+import nltk
+import spacy
+from spacy.lang.pt.examples import sentences 
+import itertools
 
 
+nlp = spacy.load("pt_core_news_sm")
+nltk.download('stopwords')
+nltk.download('punkt')
+
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize 
+import pandas as pd
+# Gensim
+import gensim
+import gensim.corpora as corpora
+from gensim.utils import simple_preprocess
+from gensim.models import CoherenceModel
+from pprint import pprint
+
+# Plotting tools
+import pyLDAvis
+import pyLDAvis.gensim_models as gensimvis  
+
+import warnings
+warnings.filterwarnings("ignore",category=DeprecationWarning)
+
+from operator import itemgetter
+from collections import OrderedDict
+import datetime
+import pandas as pd
 
 
 
@@ -250,7 +284,7 @@ def plenario(request):
                     styles.name = 'Arial'
                     paragraph_format = document.styles['Normal'].paragraph_format
                     paragraph_format.line_spacing = 1.15
-                    z = open("CSV/Votação"+str(cont)+"_"+"PLEN"+"_"+ano[2]+"_"+ano[1]+"_"+ano[0]+ ".csv",'w+',encoding='iso-8859-1')
+                    z = open("CSV/Votação"+str(cont)+"_"+"PLEN"+"_"+ano[2]+"_"+ano[1]+"_"+ano[0]+ ".csv",'w+',encoding='cp1252')
                
 
                     document.add_heading('DataSessao ' + str(orientada[0][0]) +"\n", 0)
@@ -668,7 +702,7 @@ def plenario(request):
                     document.save('word/Votação '+str(cont)+ 'Plenário '+ano[2]+"_"+ano[1]+"_"+ano[0]+'.docx')
                     print(orientada)   
                     l.sort(key=lambda x:x[1])     
-                    with open("CSV/Votação"+str(cont)+"_"+"PLEN"+"_"+ano[2]+"_"+ano[1]+"_"+ano[0]+ ".csv",'w', newline='',encoding='iso-8859-1') as csvfile:
+                    with open("CSV/Votação"+str(cont)+"_"+"PLEN"+"_"+ano[2]+"_"+ano[1]+"_"+ano[0]+ ".csv",'w', newline='',encoding='cp1252') as csvfile:
                         writer = csv.writer(csvfile,delimiter =';')
 
                         # Write data for table 1
@@ -891,31 +925,38 @@ def comissao(request):
                     NumeroReuniaoColegiado = votos['Votacao']['NumeroReuniaoColegiado']
                     TipoReuniao = votos['Votacao']['TipoReuniao']
                     NomeColegiado =  votos['Votacao']['NomeColegiado']
-                    IdentificacaoMateria =  votos['Votacao']['IdentificacaoMateria']
-                    DescricaoIdentificacaoMateria = votos['Votacao']['DescricaoIdentificacaoMateria']
+                    if 'IdentificacaoMateria' in votos['Votacao']:
+                        IdentificacaoMateria =  votos['Votacao']['IdentificacaoMateria']
+                        DescricaoIdentificacaoMateria = votos['Votacao']['DescricaoIdentificacaoMateria']
+
+                        t = votos['Votacao']['IdentificacaoMateria']
+                        t = t.split(" ")
+
+                        sigla = t[0]
+
+                        r = t[1].split('/')
+                
+                        codigo = r[0]
+                        ano = r[1]
+
+
+                        api_end_point2 = "https://legis.senado.leg.br/dadosabertos/materia/"+sigla+"/"+codigo+"/"+ano
+                        joke = requests.get(api_end_point2)
+                        xpars = xmltodict.parse(joke.text)
+                        materia = xpars['DetalheMateria']
+
+                        ementa = "Sem ementa"
+
+                        if "Materia" in  materia:
+      
+                            ementa = materia['Materia']['DadosBasicosMateria']['EmentaMateria']
+                    else:
+                        IdentificacaoMateria = "Não tem" 
+                        DescricaoIdentificacaoMateria = "Não tem"
+                        ementa = "Sem ementa"
                     DescricaoVotacao = votos['Votacao']['DescricaoVotacao']
 
-                    t = votos['Votacao']['IdentificacaoMateria']
-                    t = t.split(" ")
-
-                    sigla = t[0]
-
-                    r = t[1].split('/')
-                
-                    codigo = r[0]
-                    ano = r[1]
-
-
-                    api_end_point2 = "https://legis.senado.leg.br/dadosabertos/materia/"+sigla+"/"+codigo+"/"+ano
-                    joke = requests.get(api_end_point2)
-                    xpars = xmltodict.parse(joke.text)
-                    materia = xpars['DetalheMateria']
-
-                    ementa = "Sem ementa"
-
-                    if "Materia" in  materia:
-      
-                        ementa = materia['Materia']['DadosBasicosMateria']['EmentaMateria']
+                   
 
 
 
@@ -977,3 +1018,92 @@ def comissao(request):
             return  download_zip(lista,"Comissão_"+nomecomiss+"_"+ano1[2]+"_"+ano1[1]+"_"+ano1[0])
     
     return render(request,'comissao.html',{'comissao': comis,'alerta': "falso"})
+
+
+def gerandoatabelataquigrafica():
+    current_date = datetime.date.today()
+
+    
+
+    data = str(current_date).split('-')
+    
+
+    l = []
+
+    for z in [data[0]]:
+    
+        i = int(data[1])
+    
+        if i < 10:
+            apiendpoint = "https://legis.senado.leg.br/dadosabertos/agendareuniao/mes/"+z+"0"+str(i)+".json"
+            joke = requests.get(apiendpoint)
+        
+            y = joke.json()
+       
+            if y['AgendaReuniao']['reunioes']!=None:
+                print(i)
+                for j in range(len(y['AgendaReuniao']['reunioes']['reuniao'])):
+                    l.append(y['AgendaReuniao']['reunioes']['reuniao'][j]['codigo'])
+        
+        else:
+            apiendpoint = "https://legis.senado.leg.br/dadosabertos/agendareuniao/mes/"+z+str(i)+".json"
+            joke = requests.get(apiendpoint)
+        
+            y = joke.json()
+       
+            if y['AgendaReuniao']['reunioes']!=None:
+                print(i)
+                for j in range(len(y['AgendaReuniao']['reunioes']['reuniao'])):
+                    l.append(y['AgendaReuniao']['reunioes']['reuniao'][j]['codigo'])
+
+        texto = pd.read_csv('CSV/TaquiCompleta.csv',sep=";",encoding='cp1252', on_bad_lines='skip')
+        texto = texto.values.tolist()
+
+
+
+    l.sort()
+
+
+    for i in l:
+        apiendpoint = "https://legis.senado.gov.br/escriba-servicosweb/reuniao/xml/"+i
+        joke = requests.get(apiendpoint)
+    
+        if joke.status_code ==200 :
+     
+            taqui = xmltodict.parse(joke.text)
+
+            taquigraficas = taqui['notasTaquigraficas']['quartos']
+        
+            if type(taqui['notasTaquigraficas']['quartos']) == list:
+
+                for j in range(len(taqui['notasTaquigraficas']['quartos'])):
+                    if 'texto' in taqui['notasTaquigraficas']['quartos'][j]:
+                        w = [taqui['notasTaquigraficas']['dadosReuniao']['nomesComissoes'],taqui['notasTaquigraficas']['dadosReuniao']['siglasComissoes'],taqui['notasTaquigraficas']['quartos'][j]['texto']]
+                        if w not in texto:
+                      
+                            texto.append([taqui['notasTaquigraficas']['dadosReuniao']['nomesComissoes'],taqui['notasTaquigraficas']['dadosReuniao']['siglasComissoes'],taqui['notasTaquigraficas']['quartos'][j]['texto']])
+                        
+            else:
+                w = [taqui['notasTaquigraficas']['dadosReuniao']['nomesComissoes'],taqui['notasTaquigraficas']['dadosReuniao']['siglasComissoes'],taqui['notasTaquigraficas']['quartos']['texto']]
+                if w not in texto:
+               
+                    texto.append([taqui['notasTaquigraficas']['dadosReuniao']['nomesComissoes'],taqui['notasTaquigraficas']['dadosReuniao']['siglasComissoes'],taqui['notasTaquigraficas']['quartos']['texto']])
+
+    texto = list(texto for texto,_ in itertools.groupby(texto))
+    df1 = pd.DataFrame(texto,columns=['NomeComissao','sigla','fala'])
+    df1.to_csv('CSV/TaquiCompleta.csv', sep=';', encoding='cp1252',index=False)
+
+def taqui(request):
+    lista=[]
+    comi = "https://legis.senado.leg.br/dadosabertos/dados/ComissoesPermanentes.xml"
+    joke = requests.get(comi)
+    xpars = xmltodict.parse(joke.text)
+    votos = xpars['ComissoesPermanentes']['Colegiados']['Colegiado']
+
+    comis = []
+
+    for i in votos:
+        comis.append(i['SiglaColegiado'])
+        gerandoatabelataquigrafica()
+    return render(request,'taqui.html',{'comissao': comis,'alerta': "falso"})
+
