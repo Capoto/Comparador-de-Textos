@@ -15,38 +15,12 @@ from django.conf import settings
 from docx import Document
 from docx.shared import Inches
 from docx.shared import Pt,RGBColor
-import nltk
-import re
-import string
-import nltk
-import spacy
-from spacy.lang.pt.examples import sentences 
-import itertools
-
-
-nlp = spacy.load("pt_core_news_sm")
-nltk.download('stopwords')
-nltk.download('punkt')
-
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize 
 import pandas as pd
-# Gensim
-import gensim
-import gensim.corpora as corpora
-from gensim.utils import simple_preprocess
-from gensim.models import CoherenceModel
-from pprint import pprint
 
-# Plotting tools
-import pyLDAvis
-import pyLDAvis.gensim_models as gensimvis  
 
 import warnings
 warnings.filterwarnings("ignore",category=DeprecationWarning)
 
-from operator import itemgetter
-from collections import OrderedDict
 import datetime
 import pandas as pd
 
