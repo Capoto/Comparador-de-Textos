@@ -15,8 +15,6 @@ from django.conf import settings
 from docx import Document
 from docx.shared import Inches
 from docx.shared import Pt,RGBColor
-import wordcloud
-from wordcloud import WordCloud
 import nltk
 import re
 import string
