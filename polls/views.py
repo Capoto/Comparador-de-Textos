@@ -116,6 +116,8 @@ def plenario(request):
             print("Não teve votação nesse dia")
             return render(request,'plenario.html',{'alerta': "verdadeiro"})
 
+       
+
         else:
             
 
@@ -225,7 +227,10 @@ def plenario(request):
                     xpars = xmltodict.parse(joke.text)
                     ori =  xpars['OrientacaoBancada']
                 
-                    if 'votacoes' in ori:
+                    if ori is None:
+                        return render(request,'plenario.html')
+                    
+                    if 'votacoes':
                         ori = xpars['OrientacaoBancada']['votacoes']
                         flag = 0
                         for i  in  ori:
@@ -246,6 +251,7 @@ def plenario(request):
                         if flag==0:
                             total = sim+nao+presidente+abss+pnrv+ncom
                             orientada.append([d,desc,mtr,sim,nao,presidente,abss,pnrv,total,res,secreta,"SEM ORIENTAÇÃO"])
+
 
                     print(cont)
                     document = Document()
@@ -525,7 +531,10 @@ def plenario(request):
                     joke = requests.get(api_end_point3)
                     xpars = xmltodict.parse(joke.text)
                     ori =  xpars['OrientacaoBancada']
-                
+                    
+                    if ori is None:
+                        return render(request,'plenario.html')
+
                     if 'votacoes' in ori:
                         ori = xpars['OrientacaoBancada']['votacoes']
                         flag = 0
