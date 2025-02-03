@@ -167,23 +167,24 @@ def plenario(request):
                             secreta = "Não"
 
                         for j in i['Votos']['VotoParlamentar']:
-                        
-                            if j['Voto']=='Sim':
-                                sim+=1
-                            elif j['Voto']=='Não':
-                                nao+=1
-                            elif j['Voto']=='P-NRV':
-                                pnrv+=1
-                            elif j['Voto']=='Presidente (art. 51 RISF)':
-                                presidente+=1
-                            elif  j['Voto']=='Abstenção':
-                                abss+=1
-                            elif j['Voto']=='NCom':
-                                ncom+=1
+                            
+                            if 'Voto' in j:
+                                if j['Voto']=='Sim':
+                                    sim+=1
+                                elif j['Voto']=='Não':
+                                    nao+=1
+                                elif j['Voto']=='P-NRV':
+                                    pnrv+=1
+                                elif j['Voto']=='Presidente (art. 51 RISF)':
+                                    presidente+=1
+                                elif  j['Voto']=='Abstenção':
+                                    abss+=1
+                                elif j['Voto']=='NCom':
+                                    ncom+=1
                         
 
                         
-                            l.append([j['NomeParlamentar'],j['SiglaPartido'],j['SiglaUF'],j['Voto']])
+                                l.append([j['NomeParlamentar'],j['SiglaPartido'],j['SiglaUF'],j['Voto']])
 
 
                      
@@ -205,22 +206,23 @@ def plenario(request):
                             secreta = "Não"
                     
                         for j in i['Votos']['VotoParlamentar']:
-                        
-                            if j['Voto']=='Sim':
-                                sim+=1
-                            elif j['Voto']=='Não':
-                                nao+=1
-                            elif j['Voto']=='P-NRV':
-                                pnrv+=1
-                            elif j['Voto']=='Presidente (art. 51 RISF)':
-                                presidente+=1
-                            elif  j['Voto']=='Abstenção':
-                                abss+=1
-                            elif j['Voto']=='NCom':
-                                ncom+=1
+                            if 'Voto' in j:
+                            
+                                if j['Voto']=='Sim':
+                                    sim+=1
+                                elif j['Voto']=='Não':
+                                    nao+=1
+                                elif j['Voto']=='P-NRV':
+                                    pnrv+=1
+                                elif j['Voto']=='Presidente (art. 51 RISF)':
+                                    presidente+=1
+                                elif  j['Voto']=='Abstenção':
+                                    abss+=1
+                                elif j['Voto']=='NCom':
+                                    ncom+=1
                 
                        
-                            l.append([j['NomeParlamentar'],j['SiglaPartido'],j['SiglaUF'],j['Voto']])
+                                l.append([j['NomeParlamentar'],j['SiglaPartido'],j['SiglaUF'],j['Voto']])
 
                     api_end_point3 = "https://legis.senado.leg.br/dadosabertos/plenario/votacao/orientacaoBancada/"+action
                     joke = requests.get(api_end_point3)
